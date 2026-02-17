@@ -3,6 +3,22 @@
 [ext_resource type="Script" uid="uid://ce2hk430kne6" path="res://scripts/InventoryUINode.gd" id="1_l5txx"]
 [ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_wqexf"]
 [ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_ju2k0"]
+[ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_nvcdf"]
+[ext_resource type="Texture2D" uid="uid://hhr5aldpocfo" path="res://assets/ui/dpad_up.png" id="5_141ln"]
+[ext_resource type="Texture2D" uid="uid://ds2o1awck45r2" path="res://assets/ui/dpadD_left.png" id="5_d0rvq"]
+[ext_resource type="Texture2D" uid="uid://cyok08w4ldo7j" path="res://assets/ui/dpad_down.png" id="6_tbtli"]
+[ext_resource type="Texture2D" uid="uid://dmm8kj6kx4xkr" path="res://assets/ui/dpadD_up.png" id="7_4jdrs"]
+[ext_resource type="Texture2D" uid="uid://bfr72orwtusf8" path="res://assets/ui/dpad_right.png" id="7_hfc6r"]
+[ext_resource type="Texture2D" uid="uid://c5rxovlrkhhi8" path="res://assets/ui/dpadD_down.png" id="9_a70b0"]
+[ext_resource type="Texture2D" uid="uid://ctfeyxwqnwwam" path="res://assets/ui/dpadD_right.png" id="11_u03wm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5txx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp0l5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67gaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhf62"]
 
 [node name="InventoryUINode" type="Control" unique_id=207678974]
 layout_mode = 3
@@ -25,42 +41,96 @@ anchor_bottom = 1.0
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MainContainer" type="VBoxContainer" parent="Background" unique_id=1045534536]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1888988666]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -31.0
-offset_right = 31.0
-offset_bottom = 83.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="MenuContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=1045534536]
+layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="Background/MainContainer" unique_id=196059479]
+[node name="Label" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=196059479]
 layout_mode = 2
 text = "Your Stuff"
 label_settings = ExtResource("1_wqexf")
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="Background/MainContainer" unique_id=1951080801]
+[node name="Spacer1" type="Control" parent="Background/MarginContainer/MenuContainer" unique_id=1951080801]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Background/MainContainer" unique_id=1584331548]
+[node name="Label2" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=1584331548]
 layout_mode = 2
 text = "Dynamite"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Background/MainContainer" unique_id=1318989849]
+[node name="Label3" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=1318989849]
 layout_mode = 2
 text = "Frying pan"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="Background/MainContainer" unique_id=156415019]
+[node name="Label4" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=156415019]
 layout_mode = 2
 text = "Horse poop"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="Background/MarginContainer/MenuContainer" unique_id=1214743075]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TSBtnsHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=590510190]
+layout_mode = 2
+alignment = 1
+
+[node name="TSBtn1" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=444114934]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="LeftBtn" type="TouchScreenButton" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox/TSBtn1" unique_id=668527097]
+texture_normal = ExtResource("4_nvcdf")
+texture_pressed = ExtResource("5_d0rvq")
+shape = SubResource("RectangleShape2D_l5txx")
+shape_visible = false
+action = "ui_left"
+
+[node name="TSBtn2" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=952657258]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="UpBtn" type="TouchScreenButton" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox/TSBtn2" unique_id=731724600]
+texture_normal = ExtResource("5_141ln")
+texture_pressed = ExtResource("7_4jdrs")
+shape = SubResource("RectangleShape2D_rp0l5")
+shape_visible = false
+action = "ui_up"
+
+[node name="TSBtn3" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=331534000]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="DownBtn" type="TouchScreenButton" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox/TSBtn3" unique_id=1898441474]
+texture_normal = ExtResource("6_tbtli")
+texture_pressed = ExtResource("9_a70b0")
+shape = SubResource("RectangleShape2D_67gaj")
+shape_visible = false
+action = "ui_down"
+
+[node name="TSBtn4" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=1024453835]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="RightBtn" type="TouchScreenButton" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox/TSBtn4" unique_id=1844272142]
+texture_normal = ExtResource("7_hfc6r")
+texture_pressed = ExtResource("11_u03wm")
+shape = SubResource("RectangleShape2D_rhf62")
+shape_visible = false
+action = "ui_right"

@@ -29,7 +29,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if currState in [STATE.WALKING]:
-		if (event.is_action_pressed("ui_right")):
+		if (event.is_action_pressed("ui_left")):
+			printt("MainNode ::", "Walking Input", "ui_left");
+		elif (event.is_action_pressed("ui_up")):
+			printt("MainNode ::", "Walking Input", "ui_up");
+		elif (event.is_action_pressed("ui_down")):
+			printt("MainNode ::", "Walking Input", "ui_down");
+		elif (event.is_action_pressed("ui_right")):
 			printt("MainNode ::", "Walking Input", "ui_right");
 			currState = STATE.ENTER_DIALOG;
 	elif currState in [STATE.DIALOG]:
