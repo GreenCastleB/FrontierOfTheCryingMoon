@@ -1,3 +1,4 @@
 *.import
+*.tmp
 .godot/
 /android/
