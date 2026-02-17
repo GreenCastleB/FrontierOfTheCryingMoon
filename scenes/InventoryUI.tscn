@@ -49,18 +49,18 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="Background/MainContainer" unique_id=1584331548]
 layout_mode = 2
-text = "[ Object 1 ]"
+text = "Dynamite"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Background/MainContainer" unique_id=1318989849]
 layout_mode = 2
-text = "Object 2"
+text = "Frying pan"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="Background/MainContainer" unique_id=156415019]
 layout_mode = 2
-text = "Object 3"
+text = "Horse poop"
 label_settings = ExtResource("2_ju2k0")
 horizontal_alignment = 1

@@ -1,7 +1,7 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://tlkpx1jnb0cx"]
 
-[ext_resource type="FontFile" uid="uid://dgpokng36jxva" path="res://assets/fonts/duality.otf" id="1_ah3tg"]
+[ext_resource type="FontFile" uid="uid://c45fk2qs37yf2" path="res://assets/fonts/devilchildren.ttf" id="1_ah3tg"]
 
 [resource]
 font = ExtResource("1_ah3tg")
-font_size = 10
+font_size = 8
