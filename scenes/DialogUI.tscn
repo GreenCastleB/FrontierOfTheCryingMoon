@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dsy3tcawbdjl2"]
+
+[ext_resource type="Script" uid="uid://2sixb8376mup" path="res://scripts/DialogUINode.gd" id="1_6n8ev"]
+[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_wgg1a"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_kqcxc"]
+
+[node name="DialogUINode" type="Control" unique_id=713779641]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+script = ExtResource("1_6n8ev")
+
+[node name="Background" type="ColorRect" parent="." unique_id=632990928]
+unique_name_in_owner = true
+clip_children = 2
+clip_contents = true
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainContainer" type="VBoxContainer" parent="Background" unique_id=783776344]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 125.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Background/MainContainer" unique_id=135374145]
+layout_mode = 2
+text = "Talkin' with
+<character>"
+label_settings = ExtResource("1_wgg1a")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Background/MainContainer" unique_id=443257141]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Background/MainContainer" unique_id=1142494762]
+layout_mode = 2
+text = "Howdy there partner"
+label_settings = ExtResource("2_kqcxc")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Background/MainContainer" unique_id=1299598626]
+layout_mode = 2
+text = "What can I do ya for?"
+label_settings = ExtResource("2_kqcxc")
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="Background/MainContainer" unique_id=2118149888]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Background/MainContainer" unique_id=1037416947]
+layout_mode = 2
+text = "{actions}"
+label_settings = ExtResource("1_wgg1a")
+horizontal_alignment = 1

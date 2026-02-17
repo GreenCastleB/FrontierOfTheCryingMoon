@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c0afm6ub7n0av"]
+
+[ext_resource type="Script" uid="uid://ce2hk430kne6" path="res://scripts/InventoryUINode.gd" id="1_l5txx"]
+[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_wqexf"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_ju2k0"]
+
+[node name="InventoryUINode" type="Control" unique_id=207678974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+script = ExtResource("1_l5txx")
+
+[node name="Background" type="ColorRect" parent="." unique_id=247872473]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainContainer" type="VBoxContainer" parent="Background" unique_id=1045534536]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Background/MainContainer" unique_id=196059479]
+layout_mode = 2
+text = "Your Stuff"
+label_settings = ExtResource("1_wqexf")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Background/MainContainer" unique_id=1951080801]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Background/MainContainer" unique_id=1584331548]
+layout_mode = 2
+text = "[ Object 1 ]"
+label_settings = ExtResource("2_ju2k0")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Background/MainContainer" unique_id=1318989849]
+layout_mode = 2
+text = "Object 2"
+label_settings = ExtResource("2_ju2k0")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Background/MainContainer" unique_id=156415019]
+layout_mode = 2
+text = "Object 3"
+label_settings = ExtResource("2_ju2k0")
+horizontal_alignment = 1

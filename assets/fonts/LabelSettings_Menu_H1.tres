@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bmhblsr0by1t3"]
+
+[ext_resource type="FontFile" uid="uid://dgpokng36jxva" path="res://assets/fonts/duality.otf" id="1_cj1ce"]
+
+[resource]
+font = ExtResource("1_cj1ce")

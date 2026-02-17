@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://co86iou6io142"]
+
+[ext_resource type="PackedScene" uid="uid://c0afm6ub7n0av" path="res://scenes/InventoryUI.tscn" id="1_0bbpv"]
+[ext_resource type="Script" uid="uid://mnnvnj4xl2pf" path="res://scripts/MainNode.gd" id="1_rarhs"]
+[ext_resource type="PackedScene" uid="uid://cexcnw761j3ql" path="res://scenes/WorldWindow.tscn" id="2_rarhs"]
+[ext_resource type="PackedScene" uid="uid://dsy3tcawbdjl2" path="res://scenes/DialogUI.tscn" id="3_vcsgt"]
+
+[sub_resource type="Animation" id="Animation_vcsgt"]
+resource_name = "HideDialog"
+length = 0.75
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIRegionBox/InventoryUI:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIRegionBox/DialogUI:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rarhs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIRegionBox/InventoryUI:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIRegionBox/DialogUI:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0bbpv"]
+resource_name = "ShowDialog"
+length = 0.75
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIRegionBox/InventoryUI:progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIRegionBox/DialogUI:progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rarhs"]
+_data = {
+&"HideDialog": SubResource("Animation_vcsgt"),
+&"RESET": SubResource("Animation_rarhs"),
+&"ShowDialog": SubResource("Animation_0bbpv")
+}
+
+[node name="MainNode" type="MarginContainer" unique_id=473272699]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_rarhs")
+
+[node name="UIRegionBox" type="HBoxContainer" parent="." unique_id=1272664194]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="InventoryUI" parent="UIRegionBox" unique_id=207678974 instance=ExtResource("1_0bbpv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WorldWindow" parent="UIRegionBox" unique_id=1409088015 instance=ExtResource("2_rarhs")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="DialogUI" parent="UIRegionBox" unique_id=713779641 instance=ExtResource("3_vcsgt")]
+unique_name_in_owner = true
+layout_mode = 2
+progress = 0.0
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=229979585]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_rarhs")
+autoplay = &"RESET"

@@ -15,6 +15,7 @@ config/description="Made for a Bite Size Game Jam
 w/ HyperPixel & Timconceivable
 February 2026"
 config/version="0"
+run/main_scene="uid://co86iou6io142"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
@@ -31,7 +32,7 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/sharp_corners=true
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 
 [file_customization]
