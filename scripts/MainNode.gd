@@ -29,19 +29,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if currState in [STATE.WALKING]:
-		if (event.is_action_pressed("ui_left")):
-			printt("MainNode ::", "Walking Input", "ui_left");
-		elif (event.is_action_pressed("ui_up")):
-			printt("MainNode ::", "Walking Input", "ui_up");
-		elif (event.is_action_pressed("ui_down")):
-			printt("MainNode ::", "Walking Input", "ui_down");
-		elif (event.is_action_pressed("ui_right")):
-			printt("MainNode ::", "Walking Input", "ui_right");
-			currState = STATE.ENTER_DIALOG;
-	elif currState in [STATE.DIALOG]:
-		if (event.is_action_pressed("ui_left")):
-			printt("MainNode ::", "Dialog Input", "ui_left");
-			currState = STATE.EXIT_DIALOG;
+		# pass input into WorldWindow who will pass it to WorldNode
+		%WorldWindow.inputFromParent(event);
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	var animFin:String = STATESTR[currState] + ":" + anim_name;

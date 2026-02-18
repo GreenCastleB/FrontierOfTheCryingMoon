@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cexcnw761j3ql"]
 
-[ext_resource type="Texture2D" uid="uid://yvdirgw4sbta" path="res://assets/icon.svg" id="1_kyo8p"]
-[ext_resource type="Texture2D" uid="uid://cevtpwntv621i" path="res://assets/bitesizejam.png" id="2_xnnib"]
+[ext_resource type="PackedScene" uid="uid://cebiqt2ntschl" path="res://scenes/WorldNode.tscn" id="1_kyo8p"]
+[ext_resource type="Script" uid="uid://dpp7bge6umtxp" path="res://scripts/WorldWindowNode.gd" id="1_xnnib"]
 
 [node name="WorldWindow" type="Control" unique_id=1409088015]
 custom_minimum_size = Vector2(206, 172)
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+script = ExtResource("1_xnnib")
 
 [node name="ViewContainer" type="SubViewportContainer" parent="." unique_id=837699786]
 layout_mode = 1
@@ -23,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WorldView" type="SubViewport" parent="ViewContainer" unique_id=669958383]
+unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -30,14 +32,4 @@ snap_2d_vertices_to_pixel = true
 size = Vector2i(208, 172)
 render_target_update_mode = 4
 
-[node name="WorldNode" type="Node2D" parent="ViewContainer/WorldView" unique_id=828642725]
-
-[node name="Sprite2D" type="Sprite2D" parent="ViewContainer/WorldView/WorldNode" unique_id=1084309934]
-texture = ExtResource("1_kyo8p")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ViewContainer/WorldView/WorldNode" unique_id=261575702]
-position = Vector2(158, 0)
-texture = ExtResource("2_xnnib")
-
-[node name="WorldCam" type="Camera2D" parent="ViewContainer/WorldView/WorldNode" unique_id=1458072378]
-position = Vector2(69, 4)
+[node name="WorldNode" parent="ViewContainer/WorldView" unique_id=477839040 instance=ExtResource("1_kyo8p")]

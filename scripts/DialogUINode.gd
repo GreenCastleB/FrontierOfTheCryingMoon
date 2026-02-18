@@ -11,3 +11,6 @@ const FULL_SIZE:int = 102;
 		var custMinSize:int = roundi(FULL_SIZE * progress);
 		%Background.set_deferred("custom_minimum_size", Vector2(custMinSize, 0));
 		self.set_deferred("custom_minimum_size", Vector2(custMinSize, 0));
+
+func _ready() -> void:
+	printt("DialogUI ::", "_ready");
