@@ -14,14 +14,15 @@ config/name="BiteSizeJam"
 config/description="Made for a Bite Size Game Jam
 w/ HyperPixel & Timconceivable
 February 2026"
-config/version="0"
-run/main_scene="uid://co86iou6io142"
+config/version="0.1"
+run/main_scene="uid://frsrupfv2xrr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://cevtpwntv621i"
 
 [autoload]
 
 GLOBAL="*uid://be3iqouq2nmjm"
+MUSIC="*uid://dx6fvqqpiou36"
 
 [debug]
 

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c7yiyulp3t2kt"]
+
+[ext_resource type="Script" uid="uid://y4m4fy0v5am" path="res://scripts/HelpCard.gd" id="1_jidsu"]
+[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_ld7ew"]
+[ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/longbtn.png" id="2_jidsu"]
+[ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="3_mt4w2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]
+shader = ExtResource("3_mt4w2")
+shader_parameter/progress = 1.0
+
+[node name="HelpCardNode" type="Control" unique_id=1970429258]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jidsu")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1565127715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="MainVBox" type="VBoxContainer" parent="MarginContainer" unique_id=1127611663]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/MainVBox" unique_id=1828130671]
+layout_mode = 2
+text = "Instructions"
+label_settings = ExtResource("1_ld7ew")
+horizontal_alignment = 1
+
+[node name="CenterStuff" type="CenterContainer" parent="MarginContainer/MainVBox" unique_id=436802073]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer/MainVBox" unique_id=1218296217]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("2_jidsu")
+
+[node name="Label" type="Label" parent="MarginContainer/MainVBox/BackButton" unique_id=191813338]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+label_settings = ExtResource("1_ld7ew")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="XferRect" type="ColorRect" parent="." unique_id=445494145]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_m0ik5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="MarginContainer/MainVBox/BackButton" to="." method="_on_back_button_pressed"]
