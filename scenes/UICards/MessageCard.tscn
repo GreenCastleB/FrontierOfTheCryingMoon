@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ckbdfob5b3xv6"]
 
 [ext_resource type="Script" uid="uid://f74rsifsmsjq" path="res://scripts/MessageCard.gd" id="1_lqanm"]
-[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="2_4eqrm"]
 [ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_uci7g"]
-[ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/longbtn.png" id="4_gq858"]
+[ext_resource type="Texture2D" uid="uid://d4gncxav7hsj0" path="res://assets/ui/smallerbtn.png" id="4_8u5ri"]
+[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="5_gvj03"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="5_p4gs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]
@@ -35,17 +35,12 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/MainVBox" unique_id=1828130671]
-layout_mode = 2
-text = "A Message"
-label_settings = ExtResource("2_4eqrm")
-horizontal_alignment = 1
-
 [node name="InnerMargin" type="MarginContainer" parent="MarginContainer/MainVBox" unique_id=1887460816]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainVBox/InnerMargin" unique_id=1666697164]
@@ -63,7 +58,7 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-texture_normal = ExtResource("4_gq858")
+texture_normal = ExtResource("4_8u5ri")
 
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/SkipButton" unique_id=191813338]
 layout_mode = 1
@@ -79,9 +74,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Skip"
-label_settings = ExtResource("2_4eqrm")
+label_settings = ExtResource("5_gvj03")
 horizontal_alignment = 1
-vertical_alignment = 3
+vertical_alignment = 1
 
 [node name="XferRect" type="ColorRect" parent="." unique_id=445494145]
 unique_name_in_owner = true

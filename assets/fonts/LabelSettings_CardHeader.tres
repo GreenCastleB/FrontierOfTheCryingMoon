@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://iijjbxdiskul"]
+
+[ext_resource type="FontFile" uid="uid://dgpokng36jxva" path="res://assets/fonts/duality.otf" id="1_ljdys"]
+
+[resource]
+font = ExtResource("1_ljdys")
+font_size = 24

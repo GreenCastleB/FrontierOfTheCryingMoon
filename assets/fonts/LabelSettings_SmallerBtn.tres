@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://breejx0iu0gh3"]
+
+[ext_resource type="FontFile" uid="uid://bpb6jjndle4xr" path="res://assets/fonts/sully.ttf" id="1_5g7r4"]
+
+[resource]
+font = ExtResource("1_5g7r4")
+font_size = 18
+font_color = Color(0, 0, 0, 1)

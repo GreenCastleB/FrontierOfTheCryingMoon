@@ -19,10 +19,10 @@ var currState:STATE = STATE.INIT:
 			RenderingServer.set_default_clear_color(Color.BLACK);
 			get_tree().change_scene_to_file(nextScene);
 
-var nextScene:String = "res://scenes/TitleCard.tscn";
+var nextScene:String = "res://scenes/UICards/TitleCard.tscn";
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color("4789ce"));
+	RenderingServer.set_default_clear_color(Color("933215ff"));
 	%VersionLabel.text = "version " + ProjectSettings.get_setting("application/config/version");
 	MUSIC.playTitleTheme();
 	
@@ -40,23 +40,23 @@ func _on_play_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "PLAY BUTTON PRESSED");
 		GLOBAL.setUpGame();
-		nextScene = "res://scenes/MessageCard.tscn";
+		nextScene = "res://scenes/UICards/MessageCard.tscn";
 		currState = STATE.EXIT;
 
 func _on_help_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "HELP BUTTON PRESSED");
-		nextScene = "res://scenes/HelpCard.tscn";
+		nextScene = "res://scenes/UICards/HelpCard.tscn";
 		currState = STATE.EXIT;
 
 func _on_credits_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "CREDITS BUTTON PRESSED");
-		nextScene = "res://scenes/CreditsCard.tscn";
+		nextScene = "res://scenes/UICards/CreditsCard.tscn";
 		currState = STATE.EXIT;
 
 func _on_settings_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "SETTINGS BUTTON PRESSED");
-		nextScene = "res://scenes/SettingsCard.tscn";
+		nextScene = "res://scenes/UICards/SettingsCard.tscn";
 		currState = STATE.EXIT;

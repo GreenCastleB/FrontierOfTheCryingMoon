@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://blypgdyyrig5m"]
+
+[ext_resource type="FontFile" uid="uid://dgpokng36jxva" path="res://assets/fonts/duality.otf" id="1_xyvsh"]
+
+[resource]
+font = ExtResource("1_xyvsh")
+font_size = 18
+font_color = Color(0.85490197, 0.32941177, 0.1764706, 1)

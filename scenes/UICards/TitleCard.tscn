@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://frsrupfv2xrr"]
 
-[ext_resource type="Script" uid="uid://hm7vffkl5gtm" path="res://scripts/TitleCard.gd" id="1_ahxyd"]
-[ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="2_3id3n"]
-[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="2_b7sm8"]
-[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_oppt5"]
-[ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/longbtn.png" id="4_bctuu"]
-[ext_resource type="Texture2D" uid="uid://cevtpwntv621i" path="res://assets/bitesizejam.png" id="5_tlrg0"]
+[ext_resource type="Script" uid="uid://hm7vffkl5gtm" path="res://scripts/TitleCard.gd" id="1_ab78a"]
+[ext_resource type="LabelSettings" uid="uid://iijjbxdiskul" path="res://assets/fonts/LabelSettings_CardHeader.tres" id="2_ab78a"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_sqikw"]
+[ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/titlescreenbtn.png" id="4_ekcdg"]
+[ext_resource type="LabelSettings" uid="uid://blypgdyyrig5m" path="res://assets/fonts/LabelSettings_TitleBtn.tres" id="5_qokpe"]
+[ext_resource type="Texture2D" uid="uid://cevtpwntv621i" path="res://assets/bitesizejam.png" id="6_77urs"]
+[ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="7_o2kl0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpw5s"]
-shader = ExtResource("2_3id3n")
+shader = ExtResource("7_o2kl0")
 shader_parameter/progress = 1.0
 
 [node name="TitleCardNode" type="Control" unique_id=106990135]
@@ -18,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ahxyd")
+script = ExtResource("1_ab78a")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1271944354]
 layout_mode = 1
@@ -30,10 +31,11 @@ grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
 
 [node name="MainVBox" type="VBoxContainer" parent="MarginContainer" unique_id=1479868193]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
 [node name="CenterTitle" type="CenterContainer" parent="MarginContainer/MainVBox" unique_id=1275652951]
 layout_mode = 2
@@ -46,7 +48,7 @@ theme_override_constants/separation = -6
 [node name="TitleLabel" type="Label" parent="MarginContainer/MainVBox/CenterTitle/TitleStuffContainer" unique_id=1984820961]
 layout_mode = 2
 text = "A Game With Werewolves"
-label_settings = ExtResource("2_b7sm8")
+label_settings = ExtResource("2_ab78a")
 horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="MarginContainer/MainVBox/CenterTitle/TitleStuffContainer" unique_id=1504834268]
@@ -54,7 +56,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "version 0.0"
-label_settings = ExtResource("3_oppt5")
+label_settings = ExtResource("3_sqikw")
 horizontal_alignment = 2
 
 [node name="ButtonsGrid" type="GridContainer" parent="MarginContainer/MainVBox" unique_id=751545601]
@@ -66,7 +68,7 @@ columns = 2
 
 [node name="PlayButton" type="TextureButton" parent="MarginContainer/MainVBox/ButtonsGrid" unique_id=511751107]
 layout_mode = 2
-texture_normal = ExtResource("4_bctuu")
+texture_normal = ExtResource("4_ekcdg")
 
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/ButtonsGrid/PlayButton" unique_id=2112703980]
 layout_mode = 1
@@ -82,13 +84,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
-label_settings = ExtResource("2_b7sm8")
+label_settings = ExtResource("5_qokpe")
 horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="HelpButton" type="TextureButton" parent="MarginContainer/MainVBox/ButtonsGrid" unique_id=2120521158]
 layout_mode = 2
-texture_normal = ExtResource("4_bctuu")
+texture_normal = ExtResource("4_ekcdg")
 
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/ButtonsGrid/HelpButton" unique_id=882438594]
 layout_mode = 1
@@ -104,13 +106,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Instructions"
-label_settings = ExtResource("2_b7sm8")
+label_settings = ExtResource("5_qokpe")
 horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="CreditsButton" type="TextureButton" parent="MarginContainer/MainVBox/ButtonsGrid" unique_id=1812290313]
 layout_mode = 2
-texture_normal = ExtResource("4_bctuu")
+texture_normal = ExtResource("4_ekcdg")
 
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/ButtonsGrid/CreditsButton" unique_id=313360556]
 layout_mode = 1
@@ -126,13 +128,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Credits"
-label_settings = ExtResource("2_b7sm8")
+label_settings = ExtResource("5_qokpe")
 horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="SettingsButton" type="TextureButton" parent="MarginContainer/MainVBox/ButtonsGrid" unique_id=1085297547]
 layout_mode = 2
-texture_normal = ExtResource("4_bctuu")
+texture_normal = ExtResource("4_ekcdg")
 
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/ButtonsGrid/SettingsButton" unique_id=1223520498]
 layout_mode = 1
@@ -148,7 +150,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Settings"
-label_settings = ExtResource("2_b7sm8")
+label_settings = ExtResource("5_qokpe")
 horizontal_alignment = 1
 vertical_alignment = 3
 
@@ -162,16 +164,16 @@ alignment = 1
 [node name="BSJLabel" type="Label" parent="MarginContainer/MainVBox/BSJHBox" unique_id=1829676962]
 layout_mode = 2
 text = "made for Bite Size Game Jam"
-label_settings = ExtResource("3_oppt5")
+label_settings = ExtResource("3_sqikw")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/MainVBox/BSJHBox" unique_id=1527967011]
 layout_mode = 2
-texture = ExtResource("5_tlrg0")
+texture = ExtResource("6_77urs")
 
 [node name="DateLabel" type="Label" parent="MarginContainer/MainVBox/BSJHBox" unique_id=594761977]
 layout_mode = 2
 text = "February 2026"
-label_settings = ExtResource("3_oppt5")
+label_settings = ExtResource("3_sqikw")
 
 [node name="XferRect" type="ColorRect" parent="." unique_id=2029064616]
 unique_name_in_owner = true
