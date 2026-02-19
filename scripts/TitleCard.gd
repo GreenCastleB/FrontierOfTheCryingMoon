@@ -19,7 +19,7 @@ var currState:STATE = STATE.INIT:
 			RenderingServer.set_default_clear_color(Color.BLACK);
 			get_tree().change_scene_to_file(nextScene);
 
-var nextScene:String;
+var nextScene:String = "res://scenes/TitleCard.tscn";
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color("ba542fff"));
@@ -39,7 +39,8 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "PLAY BUTTON PRESSED");
-		nextScene = "res://scenes/Main.tscn";
+		GLOBAL.setUpGame();
+		nextScene = "res://scenes/MessageCard.tscn";
 		currState = STATE.EXIT;
 
 func _on_help_button_pressed() -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://y4m4fy0v5am" path="res://scripts/HelpCard.gd" id="1_jidsu"]
 [ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_ld7ew"]
 [ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/longbtn.png" id="2_jidsu"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_emevr"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="3_mt4w2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]
@@ -40,10 +41,29 @@ text = "Instructions"
 label_settings = ExtResource("1_ld7ew")
 horizontal_alignment = 1
 
-[node name="CenterStuff" type="CenterContainer" parent="MarginContainer/MainVBox" unique_id=436802073]
+[node name="InnerMargin" type="MarginContainer" parent="MarginContainer/MainVBox" unique_id=1868327622]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainVBox/InnerMargin" unique_id=581168437]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=1658500800]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+text = "During the day:  Walk around town, find materials and give 'em to the townspeople so they can set traps.  That'll help you at night."
+label_settings = ExtResource("3_emevr")
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=1201122765]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+text = "Controls:  ASWD for walkin' around.  Touchscreen users can get on-screen buttons... but they don't come cheap."
+label_settings = ExtResource("3_emevr")
+autowrap_mode = 2
 
 [node name="BackButton" type="TextureButton" parent="MarginContainer/MainVBox" unique_id=1218296217]
 layout_mode = 2

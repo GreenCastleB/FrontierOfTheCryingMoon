@@ -9,7 +9,6 @@ func _ready() -> void:
 func inputFromParent(event: InputEvent) -> void:
 	# process input that has been passed down from the parent
 	
-	printt("WorldWindow ::", "inputFromParent");
 	var didPlayerMove:bool = false;
 	
 	if event.is_action_pressed("ui_up"):

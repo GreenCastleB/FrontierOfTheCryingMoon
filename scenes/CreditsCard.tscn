@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bako3ptikljmp" path="res://scripts/CreditsCard.gd" id="1_m0ik5"]
 [ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_n3rwq"]
 [ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/longbtn.png" id="2_f0ofk"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_8gn35"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="3_wok6p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]
@@ -40,10 +41,35 @@ text = "Credits"
 label_settings = ExtResource("1_n3rwq")
 horizontal_alignment = 1
 
-[node name="CenterStuff" type="CenterContainer" parent="MarginContainer/MainVBox" unique_id=436802073]
+[node name="InnerMargin" type="MarginContainer" parent="MarginContainer/MainVBox" unique_id=875886748]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/margin_left = -64
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainVBox/InnerMargin" unique_id=1439122375]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=1495173216]
+layout_mode = 2
+text = "Made with Godot Engine 4.6.stable.official"
+label_settings = ExtResource("3_8gn35")
+
+[node name="Label4" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=365986938]
+layout_mode = 2
+text = "Programming by secondepoch"
+label_settings = ExtResource("3_8gn35")
+
+[node name="Label2" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=954295100]
+layout_mode = 2
+text = "Pixel art by Timconceivable"
+label_settings = ExtResource("3_8gn35")
+
+[node name="Label3" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=1442297558]
+layout_mode = 2
+text = "Original music by HyphenPixel"
+label_settings = ExtResource("3_8gn35")
 
 [node name="BackButton" type="TextureButton" parent="MarginContainer/MainVBox" unique_id=1218296217]
 layout_mode = 2
