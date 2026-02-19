@@ -22,7 +22,7 @@ var currState:STATE = STATE.INIT:
 var nextScene:String = "res://scenes/TitleCard.tscn";
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color("ba542fff"));
+	RenderingServer.set_default_clear_color(Color("4789ce"));
 	%VersionLabel.text = "version " + ProjectSettings.get_setting("application/config/version");
 	MUSIC.playTitleTheme();
 	

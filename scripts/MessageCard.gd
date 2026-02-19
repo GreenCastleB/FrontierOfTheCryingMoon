@@ -38,7 +38,7 @@ var MessageTxtTween:Tween;
 var MessageTxtTime:float;
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color("933215ff"));
+	RenderingServer.set_default_clear_color(Color("281d41"));
 	
 	%MessageTxtLabel.visible_ratio = 0.0;
 	%MessageTxtLabel.text = GLOBAL.messageCardTxt;

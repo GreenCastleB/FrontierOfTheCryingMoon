@@ -20,7 +20,7 @@ var currState:STATE = STATE.INIT:
 			get_tree().change_scene_to_file("res://scenes/TitleCard.tscn");
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color("2d542fff"));
+	RenderingServer.set_default_clear_color(Color("4789ce"));
 	
 	# intro animation
 	%XferRect.material.set_shader_parameter("progress", 1.0);
