@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c11bij67qsqob"]
+
+[ext_resource type="Texture2D" uid="uid://241al8ihyhk3" path="res://assets/items/inv_icons.png" id="1_q7015"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cr2o"]
+atlas = ExtResource("1_q7015")
+region = Rect2(0, 0, 20, 20)
+
+[node name="StuffNode1" type="Control" unique_id=1398633239]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Icon" type="TextureRect" parent="." unique_id=241612769]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_3cr2o")
+stretch_mode = 2

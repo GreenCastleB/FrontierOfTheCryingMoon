@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://c0afm6ub7n0av"]
 
 [ext_resource type="Script" uid="uid://ce2hk430kne6" path="res://scripts/InventoryUINode.gd" id="1_l5txx"]
-[ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_wqexf"]
 [ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_ju2k0"]
+[ext_resource type="PackedScene" uid="uid://d022rko0xdddv" path="res://scenes/WorkerNode.tscn" id="3_4jdrs"]
+[ext_resource type="PackedScene" uid="uid://c11bij67qsqob" path="res://scenes/StuffNode.tscn" id="4_4jdrs"]
 [ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_nvcdf"]
 [ext_resource type="Texture2D" uid="uid://hhr5aldpocfo" path="res://assets/ui/dpad_up.png" id="5_141ln"]
 [ext_resource type="Texture2D" uid="uid://ds2o1awck45r2" path="res://assets/ui/dpadD_left.png" id="5_d0rvq"]
+[ext_resource type="Texture2D" uid="uid://ckjvv08pg0r11" path="res://assets/characters/worker_icons.png" id="5_gxnuj"]
+[ext_resource type="Texture2D" uid="uid://d4gncxav7hsj0" path="res://assets/ui/smallerbtn.png" id="6_0k2hi"]
 [ext_resource type="Texture2D" uid="uid://cyok08w4ldo7j" path="res://assets/ui/dpad_down.png" id="6_tbtli"]
 [ext_resource type="Texture2D" uid="uid://dmm8kj6kx4xkr" path="res://assets/ui/dpadD_up.png" id="7_4jdrs"]
 [ext_resource type="Texture2D" uid="uid://bfr72orwtusf8" path="res://assets/ui/dpad_right.png" id="7_hfc6r"]
+[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="7_tjkuq"]
 [ext_resource type="Texture2D" uid="uid://c5rxovlrkhhi8" path="res://assets/ui/dpadD_down.png" id="9_a70b0"]
 [ext_resource type="Texture2D" uid="uid://ctfeyxwqnwwam" path="res://assets/ui/dpadD_right.png" id="11_u03wm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxq26"]
+atlas = ExtResource("5_gxnuj")
+region = Rect2(0, 0, 20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5txx"]
 
@@ -48,42 +56,113 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="MenuContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=1045534536]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=196059479]
+[node name="WorkersLabel" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=196059479]
 layout_mode = 2
-text = "Your Stuff"
-label_settings = ExtResource("1_wqexf")
-horizontal_alignment = 1
-
-[node name="Spacer1" type="Control" parent="Background/MarginContainer/MenuContainer" unique_id=1951080801]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=1584331548]
-layout_mode = 2
-text = "Dynamite"
+text = "Workers"
 label_settings = ExtResource("2_ju2k0")
-horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=1318989849]
+[node name="WorkersHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=1689755559]
+clip_contents = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "Frying pan"
-label_settings = ExtResource("2_ju2k0")
-horizontal_alignment = 1
+alignment = 2
 
-[node name="Label4" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=156415019]
+[node name="WorkerNode1" parent="Background/MarginContainer/MenuContainer/WorkersHBox" unique_id=546134319 instance=ExtResource("3_4jdrs")]
 layout_mode = 2
-text = "Horse poop"
-label_settings = ExtResource("2_ju2k0")
-horizontal_alignment = 1
 
-[node name="Spacer2" type="Control" parent="Background/MarginContainer/MenuContainer" unique_id=1214743075]
+[node name="WorkerNode2" parent="Background/MarginContainer/MenuContainer/WorkersHBox" unique_id=1958254938 instance=ExtResource("3_4jdrs")]
+layout_mode = 2
+
+[node name="WorkerNode3" parent="Background/MarginContainer/MenuContainer/WorkersHBox" unique_id=628463348 instance=ExtResource("3_4jdrs")]
+layout_mode = 2
+
+[node name="WorkerNode4" parent="Background/MarginContainer/MenuContainer/WorkersHBox" unique_id=861350152 instance=ExtResource("3_4jdrs")]
+layout_mode = 2
+
+[node name="StuffLabel" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=1584331548]
+layout_mode = 2
+text = "Your stuff"
+label_settings = ExtResource("2_ju2k0")
+
+[node name="StuffGrid" type="GridContainer" parent="Background/MarginContainer/MenuContainer" unique_id=1487389090]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 4
+
+[node name="StuffNode1" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=1398633239 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode2" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=2135502896 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode3" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=1716746088 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode4" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=1195157168 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode5" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=48780305 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode6" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=821473641 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode7" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=151524153 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="StuffNode8" parent="Background/MarginContainer/MenuContainer/StuffGrid" unique_id=1192808799 instance=ExtResource("4_4jdrs")]
+layout_mode = 2
+
+[node name="TalkToLabel" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=726678001]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bartender"
+label_settings = ExtResource("2_ju2k0")
+
+[node name="TalkToHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=691660912]
+layout_mode = 2
+alignment = 1
+
+[node name="TalkToIcon" type="TextureRect" parent="Background/MarginContainer/MenuContainer/TalkToHBox" unique_id=680116237]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_mxq26")
+stretch_mode = 2
+
+[node name="TalkButton" type="TextureButton" parent="Background/MarginContainer/MenuContainer/TalkToHBox" unique_id=959316150]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_0k2hi")
+
+[node name="TalkToVerb" type="Label" parent="Background/MarginContainer/MenuContainer/TalkToHBox/TalkButton" unique_id=545550244]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Talk"
+label_settings = ExtResource("7_tjkuq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Background/MarginContainer/MenuContainer" unique_id=1214743075]
 layout_mode = 2
 size_flags_vertical = 3
 

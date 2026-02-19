@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://djsqr4n7op25w"]
+
+[ext_resource type="FontFile" uid="uid://bpb6jjndle4xr" path="res://assets/fonts/sully.ttf" id="1_j8kcr"]
+
+[resource]
+font = ExtResource("1_j8kcr")
+font_size = 14
