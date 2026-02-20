@@ -11,7 +11,7 @@ var currState:STATE = STATE.INIT:
 		printt("MessageCard ::", "stateChange", stateChange);
 		
 		if newState == STATE.READY:
-			MUSIC.playDayTheme();
+			MUSIC.playXferTheme();
 			%SkipBtnTimer.start();
 			
 			# MessageTxtLabel slow reveal
@@ -31,7 +31,7 @@ var currState:STATE = STATE.INIT:
 			var tween = get_tree().create_tween();
 			tween.tween_method(func(value): %XferRect.material.set_shader_parameter("progress", value), 0.0, 1.0, 2.00);
 			await tween.finished;
-			RenderingServer.set_default_clear_color(Color.BLACK);
+			RenderingServer.set_default_clear_color(Color("140019"));
 			get_tree().change_scene_to_file("res://scenes/Main.tscn");
 
 var MessageTxtTween:Tween;

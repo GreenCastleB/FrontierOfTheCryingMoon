@@ -25,6 +25,7 @@ var currState:STATE = STATE.INIT:
 
 func _ready() -> void:
 	printt("MainNode ::", "_ready");
+	MUSIC.playDayTheme();
 	currState = STATE.WALKING;
 
 func _input(event: InputEvent) -> void:

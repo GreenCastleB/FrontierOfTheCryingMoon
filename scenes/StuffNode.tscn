@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://c11bij67qsqob"]
 
-[ext_resource type="Texture2D" uid="uid://241al8ihyhk3" path="res://assets/items/inv_icons.png" id="1_q7015"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6qy4i"]
+load_path = "res://.godot/imported/inv_icons.png-7f08e3a705ac783be560b24b26f9f469.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cr2o"]
-atlas = ExtResource("1_q7015")
+atlas = SubResource("CompressedTexture2D_6qy4i")
 region = Rect2(0, 0, 20, 20)
 
 [node name="StuffNode1" type="Control" unique_id=1398633239]

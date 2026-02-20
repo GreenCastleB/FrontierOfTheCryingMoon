@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.078431375, 0, 0.09803922, 1)
 
 [node name="MainContainer" type="VBoxContainer" parent="Background" unique_id=783776344]
 layout_mode = 1
@@ -41,7 +41,7 @@ grow_horizontal = 2
 [node name="Label" type="Label" parent="Background/MainContainer" unique_id=135374145]
 layout_mode = 2
 text = "Talkin' with
-<character>"
+Bartender"
 label_settings = ExtResource("1_wgg1a")
 horizontal_alignment = 1
 

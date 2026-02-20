@@ -1,14 +1,10 @@
 [gd_scene format=3 uid="uid://cebiqt2ntschl"]
 
 [ext_resource type="Script" uid="uid://hga05wg03ekw" path="res://scripts/WorldNode.gd" id="1_ko7vf"]
-[ext_resource type="Texture2D" uid="uid://cxauv7f0icst8" path="res://assets/dummybg.png" id="2_ko7vf"]
 [ext_resource type="Texture2D" uid="uid://bcctq6imy401c" path="res://assets/dummyhero.png" id="3_ko7vf"]
 
 [node name="WorldNode" type="Node2D" unique_id=477839040]
 script = ExtResource("1_ko7vf")
-
-[node name="dummybg" type="Sprite2D" parent="." unique_id=1122156682]
-texture = ExtResource("2_ko7vf")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=638584581]
 unique_name_in_owner = true

@@ -47,7 +47,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.078431375, 0, 0.09803922, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1888988666]
 layout_mode = 1
@@ -70,6 +70,7 @@ text = "Workers"
 label_settings = ExtResource("2_ju2k0")
 
 [node name="WorkersHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=1689755559]
+unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -93,6 +94,8 @@ text = "Your stuff"
 label_settings = ExtResource("2_ju2k0")
 
 [node name="StuffGrid" type="GridContainer" parent="Background/MarginContainer/MenuContainer" unique_id=1487389090]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2

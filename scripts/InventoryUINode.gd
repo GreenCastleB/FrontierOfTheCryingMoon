@@ -14,3 +14,37 @@ const FULL_SIZE:int = 102;
 
 func _ready() -> void:
 	printt("InventoryUI ::", "_ready");
+	updateFromInvState();
+
+## reads GLOBAL.inventoryState and updates visual status
+func updateFromInvState() -> void:
+	printt("InventoryUI ::", "updateFromInvState", str(GLOBAL.inventoryState["workers"].size()), str(GLOBAL.inventoryState["stuff"].size()));
+	
+	for i in range(1, 5):
+		if GLOBAL.inventoryState["workers"].size() < i:
+			%WorkersHBox.get_node("WorkerNode"+str(i)).hide();
+		else:
+			var updatingNode:Control = %WorkersHBox.get_node("WorkerNode"+str(i));
+			
+			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").texture;
+			iconTexture.region.position.x = 0;
+			updatingNode.get_node("Progress").value = 25.0;
+			
+			%WorkersHBox.get_node("WorkerNode"+str(i)).show();
+	
+	for i in range(1, 9):
+		if GLOBAL.inventoryState["stuff"].size() < i:
+			%StuffGrid.get_node("StuffNode"+str(i)).hide();
+		else:
+			var updatingNode:Control = %StuffGrid.get_node("StuffNode"+str(i));
+			
+			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").texture;
+			iconTexture.region.position.x = 0;
+			
+			%StuffGrid.get_node("StuffNode"+str(i)).show();
+	
+	if GLOBAL.inventoryState["interactable"] == null:
+		%TalkToLabel.text = "";
+		%TalkToIcon.hide();
+		%TalkButton.hide();
+		%TalkToVerb.text = "";

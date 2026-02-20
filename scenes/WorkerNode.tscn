@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://d022rko0xdddv"]
 
-[ext_resource type="Texture2D" uid="uid://ckjvv08pg0r11" path="res://assets/characters/worker_icons.png" id="1_owmpf"]
 [ext_resource type="Texture2D" uid="uid://b2of2swpntdv0" path="res://assets/ui/worker_progbar_off.png" id="2_owmpf"]
 [ext_resource type="Texture2D" uid="uid://dev1x3qqtpyfa" path="res://assets/ui/worker_progbar_on.png" id="3_ggv7s"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n6o2d"]
+load_path = "res://.godot/imported/worker_icons.png-0ba10f108e0d944a5deeac1deae0f6c4.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6o2d"]
-atlas = ExtResource("1_owmpf")
+atlas = SubResource("CompressedTexture2D_n6o2d")
 region = Rect2(0, 0, 20, 20)
 
 [node name="WorkerNode1" type="Control" unique_id=546134319]

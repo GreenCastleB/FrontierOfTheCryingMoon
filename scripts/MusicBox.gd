@@ -19,6 +19,7 @@ class MusicBox extends Node:
 		player.play();
 
 var TITLE_THEME = preload("res://assets/music/title.ogg");
+var XFER_THEME = preload("res://assets/music/transition.ogg");
 var GAMEOVER_THEME = preload("res://assets/music/game_over.ogg");
 var NIGHT_THEME = preload("res://assets/music/hell's_good_company.ogg");
 var DAY_THEME = preload("res://assets/music/blisterin'_sun.ogg");
@@ -26,6 +27,7 @@ var DAY_THEME = preload("res://assets/music/blisterin'_sun.ogg");
 var Jukebox:Dictionary;
 
 const track_TITLE_THEME = "TITLE_THEME";
+const track_XFER_THEME = "XFER_THEME";
 const track_GAMEOVER_THEME = "GAMEOVER_THEME";
 const track_NIGHT_THEME = "NIGHT_THEME";
 const track_DAY_THEME = "DAY_THEME";
@@ -44,18 +46,20 @@ func _load_timer():
 
 func _load_music():
 	Jukebox["TITLE_THEME"] = MusicBox.new(TITLE_THEME);
+	Jukebox["XFER_THEME"] = MusicBox.new(XFER_THEME);
 	Jukebox["GAMEOVER_THEME"] = MusicBox.new(GAMEOVER_THEME);
 	Jukebox["NIGHT_THEME"] = MusicBox.new(NIGHT_THEME);
 	Jukebox["DAY_THEME"] = MusicBox.new(DAY_THEME);
 	add_child(Jukebox["TITLE_THEME"]);
+	add_child(Jukebox["XFER_THEME"]);
 	add_child(Jukebox["GAMEOVER_THEME"]);
 	add_child(Jukebox["NIGHT_THEME"]);
 	add_child(Jukebox["DAY_THEME"]);
 	Jukebox["TITLE_THEME"].player.finished.connect(_onFinishedTitleTheme);
 
 func playTitleTheme():
-	if currTrack == track_DAY_THEME:
-		printt("MUSIC ::", "did not play title theme", "day is playing");
+	if currTrack == track_XFER_THEME:
+		printt("MUSIC ::", "did not play title theme", "xfer is playing");
 	elif currTrack != track_TITLE_THEME:
 		printt("MUSIC ::", "will play", "Title Theme");
 		if currTrack != null: Jukebox[currTrack].player.stop();
@@ -63,7 +67,15 @@ func playTitleTheme():
 		currTrack = track_TITLE_THEME;
 func _onFinishedTitleTheme():
 	printt("MUSIC ::", "Title Theme finished");
-	playDayTheme();
+	playXferTheme();
+func playXferTheme():
+	if currTrack != track_XFER_THEME:
+		printt("MUSIC ::", "will play", "Xfer Theme");
+		if currTrack != null: Jukebox[currTrack].player.stop();
+		transitionTimer.start();
+		await transitionTimer.timeout;
+		Jukebox["XFER_THEME"].play();
+		currTrack = track_XFER_THEME;
 func playGameOverTheme():
 	if currTrack != track_GAMEOVER_THEME:
 		printt("MUSIC ::", "will play", "Gameover Theme");
