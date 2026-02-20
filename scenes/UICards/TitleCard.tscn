@@ -47,7 +47,7 @@ theme_override_constants/separation = -6
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/MainVBox/CenterTitle/TitleStuffContainer" unique_id=1984820961]
 layout_mode = 2
-text = "A Game With Werewolves"
+text = "Zenith's Last Stand"
 label_settings = ExtResource("2_ab78a")
 horizontal_alignment = 1
 
