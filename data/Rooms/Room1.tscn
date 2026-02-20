@@ -3,6 +3,9 @@
 [ext_resource type="TileSet" uid="uid://b5yaov3prbhqo" path="res://assets/terrain/TileSet_Terrain.tres" id="1_xujys"]
 [ext_resource type="TileSet" uid="uid://c3law6a1rgppu" path="res://assets/decor/TileSet_Decor.tres" id="2_0p04j"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xujys"]
+size = Vector2(43, 81)
+
 [node name="RoomNode" type="Node2D" unique_id=1560373141]
 
 [node name="Terrain" type="TileMapLayer" parent="." unique_id=1039144906]
@@ -12,3 +15,14 @@ tile_set = ExtResource("1_xujys")
 [node name="Decor" type="TileMapLayer" parent="." unique_id=33279104]
 tile_map_data = PackedByteArray("AAD7//n/AAABAAAAAADo//n/AAABAAAAAADo/wIAAAABAAAAAADo/wsAAAABAAAAAADq//7/AAABAAAAAADq/wcAAAABAAAAAADt//r/AAABAAAAAADt/w0AAAABAAAAAADz//j/AAABAAAAAADz/w0AAAABAAAAAAD5/wwAAAABAAAAAAABAA0AAAABAAAAAAADAPn/AAABAAAAAAAFAAoAAAABAAAAAAAGAP//AAABAAAAAAAHAAMAAAABAAAAAAAHAA0AAAABAAAAAAAFAAIAAQAHAAUAAAAHAAkAAQAHAAUAAAAEAA0AAQAHAAUAAAD2/w0AAQAHAAUAAADp/w0AAQAHAAUAAADq/wkAAQAHAAUAAADp/wAAAQAHAAUAAADq//r/AQAHAAUAAADx//n/AQAHAAUAAAD4//n/AQAHAAUAAAAGAPr/AQAHAAUAAAAHAPz/AQAHAAUAAADs//z/AQAAAAMAAADs//3/AAAAAAAAAAD+//z/AQAGAAAAAAD+//3/AQAGAAEAAAD///z/AQAFAAAAAAD///3/AQAFAAEAAAAAAPz/AQAGAAAAAAAAAP3/AQAGAAEAAAABAPz/AQAHAAAAAAABAP3/AQAHAAEAAADv//z/AQAGAAAAAADv//3/AQAGAAEAAADw//z/AQAFAAAAAADw//3/AQAFAAEAAADx//z/AQAGAAAAAADx//3/AQAGAAEAAADy//z/AQAGAAAAAADy//3/AQAGAAEAAAD2//z/AQAGAAAAAAD2//3/AQAGAAEAAAD3//z/AQAGAAAAAAD3//3/AQAGAAEAAAD4//z/AQAGAAAAAAD4//3/AQAGAAEAAAD5//z/AQAFAAAAAAD5//3/AQAFAAEAAAD6//z/AQAGAAAAAAD6//3/AQAGAAEAAADz//z/AQAGAAAAAADz//3/AQAGAAEAAAD0//z/AQAFAAAAAAD0//3/AQAFAAEAAAD1//z/AQAGAAAAAAD1//3/AQAGAAEAAAD7//z/AQAGAAAAAAD7//3/AQAGAAEAAAD8//z/AQAGAAAAAAD8//3/AQAGAAEAAAD9//z/AQAFAAAAAAD9//3/AQAFAAEAAADu//z/AQAEAAAAAADu//3/AQAEAAEAAAACAAQAAQAHAAQAAAACAAgAAQAHAAMAAAA=")
 tile_set = ExtResource("2_0p04j")
+
+[node name="Doorways" type="Node2D" parent="." unique_id=548130772]
+
+[node name="Door1" type="Area2D" parent="Doorways" unique_id=1531837840]
+editor_description = "1|100|-100"
+position = Vector2(122, 117)
+collision_layer = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Doorways/Door1" unique_id=1041420070]
+shape = SubResource("RectangleShape2D_xujys")
+metadata/_edit_lock_ = true

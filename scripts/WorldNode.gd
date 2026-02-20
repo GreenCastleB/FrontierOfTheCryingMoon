@@ -18,6 +18,9 @@ func _ready() -> void:
 	var newRoom = newRoomSCN.instantiate();
 	%RoomLayer.add_child(newRoom);
 	
+	# set up doorways
+	setupDoorways();
+	
 	# set camera limits
 	setCameraLimits();
 	
@@ -35,6 +38,27 @@ func setCameraLimits() -> void:
 	%WorldCam.limit_top = usedRect.position.y * cellSize.y;
 	%WorldCam.limit_right = usedRect.end.x * cellSize.x;
 	%WorldCam.limit_bottom = usedRect.end.y * cellSize.y;
+
+## Make sure to call this after instantiating the room.
+func setupDoorways() -> void:
+	assert(%RoomLayer.get_children().size() > 0);
+	var doorwaysNode = %RoomLayer.get_children()[0].get_node("Doorways");
+	var doorwaysArray = doorwaysNode.get_children();
+	for thisDoorNode:Area2D in doorwaysArray:
+		printt("WorldNode ::", "setupDoorways", "found door", thisDoorNode.editor_description);
+		thisDoorNode.body_entered.connect(doorwayEntered.bind(thisDoorNode.editor_description));
+
+func doorwayEntered(_body:Node2D, notes:String) -> void:
+	printt("WorldNode ::", "doorwayEntered", notes);
+	var notesExp = notes.split("|");
+	GLOBAL.spawnRoom = int(notesExp[0]);
+	GLOBAL.spawnLoc = Vector2i(int(notesExp[1]), int(notesExp[2]));
+	
+	stopFromParent();
+	call_deferred("loadNewRoom");
+
+func loadNewRoom() -> void:
+	get_tree().reload_current_scene();
 
 ## parent has told us that input has stopped
 func stopFromParent() -> void:
