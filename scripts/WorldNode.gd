@@ -4,37 +4,64 @@ extends Node2D
 
 const SPEED:int = 4;
 
+var InputUpKey:bool = false;
+var InputDownKey:bool = false;
+var InputLeftKey:bool = false;
+var InputRightKey:bool = false;
+
 func _ready() -> void:
 	printt("WorldNode ::", "_ready");
 	printt("WorldNode ::", "spawning in room " + str(GLOBAL.spawnRoom), "loc " + str(GLOBAL.spawnLoc));
 	
+	# set camera limits
+	var usedRect:Rect2 = get_node("Terrain").get_used_rect();
+	var cellSize:Vector2i = get_node("Terrain").tile_set.tile_size;
+	%WorldCam.limit_left = usedRect.position.x * cellSize.x;
+	%WorldCam.limit_top = usedRect.position.y * cellSize.y;
+	%WorldCam.limit_right = usedRect.end.x * cellSize.x;
+	%WorldCam.limit_bottom = usedRect.end.y * cellSize.y;
+	
+	# set player position
 	%Player.position = GLOBAL.spawnLoc;
 	_on_player_just_moved();
 
 ## parent has told us that input has stopped
 func stopFromParent() -> void:
 	printt("WorldNode ::", "stopFromParent");
+	
+	InputUpKey = false;
+	InputDownKey = false;
+	InputLeftKey = false;
+	InputRightKey = false;
 	%Player.DIRECTION = Vector2.ZERO;
 
 ## process input that has been passed down from the parent
 func inputFromParent(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
-		%Player.DIRECTION = Vector2.UP;
+		InputUpKey = true;
+		%Player.DIRECTION.y = -1;
 	elif event.is_action_pressed("ui_down"):
-		%Player.DIRECTION = Vector2.DOWN;
+		InputDownKey = true;
+		%Player.DIRECTION.y = 1;
 	elif event.is_action_pressed("ui_left"):
-		%Player.DIRECTION = Vector2.LEFT;
+		InputLeftKey = true;
+		%Player.DIRECTION.x = -1;
 	elif event.is_action_pressed("ui_right"):
-		%Player.DIRECTION = Vector2.RIGHT;
+		InputRightKey = true;
+		%Player.DIRECTION.x = 1;
 	
-	if event.is_action_released("ui_up") and %Player.DIRECTION == Vector2.UP:
-		%Player.DIRECTION = Vector2.ZERO;
-	if event.is_action_released("ui_down") and %Player.DIRECTION == Vector2.DOWN:
-		%Player.DIRECTION = Vector2.ZERO;
-	if event.is_action_released("ui_left") and %Player.DIRECTION == Vector2.LEFT:
-		%Player.DIRECTION = Vector2.ZERO;
-	if event.is_action_released("ui_right") and %Player.DIRECTION == Vector2.RIGHT:
-		%Player.DIRECTION = Vector2.ZERO;
+	if event.is_action_released("ui_up"):
+		InputUpKey = false;
+		%Player.DIRECTION.y = 1 if InputDownKey else 0;
+	if event.is_action_released("ui_down"):
+		InputDownKey = false;
+		%Player.DIRECTION.y = -1 if InputUpKey else 0;
+	if event.is_action_released("ui_left"):
+		InputLeftKey = false;
+		%Player.DIRECTION.x = 1 if InputRightKey else 0;
+	if event.is_action_released("ui_right"):
+		InputRightKey = false;
+		%Player.DIRECTION.x = -1 if InputLeftKey else 0;
 
 func _on_player_just_moved() -> void:
 	%WorldCam.position = %Player.position;

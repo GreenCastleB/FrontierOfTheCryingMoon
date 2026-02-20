@@ -37,10 +37,10 @@ shape = SubResource("CapsuleShape2D_ko7vf")
 [node name="WorldCam" type="Camera2D" parent="." unique_id=972155906]
 unique_name_in_owner = true
 position = Vector2(69, 4)
-limit_left = -550
-limit_top = -250
-limit_right = 550
-limit_bottom = 250
+limit_left = -395
+limit_top = -125
+limit_right = 140
+limit_bottom = 235
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
