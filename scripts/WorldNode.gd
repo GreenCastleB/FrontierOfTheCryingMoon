@@ -6,11 +6,18 @@ const SPEED:int = 4;
 
 func _ready() -> void:
 	printt("WorldNode ::", "_ready");
-	printt("WorldNode ::", "spawning at", GLOBAL.spawnRoom, str(GLOBAL.spawnLoc));
-
-func inputFromParent(event: InputEvent) -> void:
-	# process input that has been passed down from the parent
+	printt("WorldNode ::", "spawning in room " + str(GLOBAL.spawnRoom), "loc " + str(GLOBAL.spawnLoc));
 	
+	%Player.position = GLOBAL.spawnLoc;
+	_on_player_just_moved();
+
+## parent has told us that input has stopped
+func stopFromParent() -> void:
+	printt("WorldNode ::", "stopFromParent");
+	%Player.DIRECTION = Vector2.ZERO;
+
+## process input that has been passed down from the parent
+func inputFromParent(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
 		%Player.DIRECTION = Vector2.UP;
 	elif event.is_action_pressed("ui_down"):

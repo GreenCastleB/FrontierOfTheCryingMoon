@@ -15,6 +15,7 @@ var currState:STATE = STATE.INIT:
 			"WALKING->ENTER_DIALOG":
 				%DialogUI.show();
 				%Anim.play("ShowDialog");
+				%WorldWindow.stopFromParent();
 			"ENTER_DIALOG->DIALOG":
 				pass;
 			"DIALOG->EXIT_DIALOG":

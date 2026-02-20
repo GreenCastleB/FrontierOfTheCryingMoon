@@ -1,0 +1,56 @@
+[gd_resource type="TileSet" format=3 uid="uid://c3law6a1rgppu"]
+
+[ext_resource type="Texture2D" uid="uid://byga5t6oepsxl" path="res://assets/decor/anim_decor.png" id="1_pwvdw"]
+[ext_resource type="Texture2D" uid="uid://ci0jv4ea6lnul" path="res://assets/decor/saloon-interior.png" id="2_e5ajp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqtts"]
+texture = ExtResource("1_pwvdw")
+0:0/animation_columns = 2
+0:0/animation_separation = Vector2i(2, 0)
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+1:0/animation_columns = 2
+1:0/animation_separation = Vector2i(2, 0)
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/0 = 0
+2:0/animation_columns = 2
+2:0/animation_separation = Vector2i(2, 0)
+2:0/animation_frame_0/duration = 1.0
+2:0/animation_frame_1/duration = 1.0
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1mcx"]
+texture = ExtResource("2_e5ajp")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -0.71943474, -0.35971832, 3.2374573, 8, -0.5395756, 8, -8)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -0.71943474, -0.35971832, 3.2374573, 8, -0.5395756, 8, -8)
+
+[resource]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_aqtts")
+sources/1 = SubResource("TileSetAtlasSource_w1mcx")
