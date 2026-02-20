@@ -13,17 +13,28 @@ func _ready() -> void:
 	printt("WorldNode ::", "_ready");
 	printt("WorldNode ::", "spawning in room " + str(GLOBAL.spawnRoom), "loc " + str(GLOBAL.spawnLoc));
 	
+	# spawn room node
+	var newRoomSCN:PackedScene = load("res://data/Rooms/Room" + str(GLOBAL.spawnRoom) + ".tscn");
+	var newRoom = newRoomSCN.instantiate();
+	%RoomLayer.add_child(newRoom);
+	
 	# set camera limits
-	var usedRect:Rect2 = get_node("Terrain").get_used_rect();
-	var cellSize:Vector2i = get_node("Terrain").tile_set.tile_size;
-	%WorldCam.limit_left = usedRect.position.x * cellSize.x;
-	%WorldCam.limit_top = usedRect.position.y * cellSize.y;
-	%WorldCam.limit_right = usedRect.end.x * cellSize.x;
-	%WorldCam.limit_bottom = usedRect.end.y * cellSize.y;
+	setCameraLimits();
 	
 	# set player position
 	%Player.position = GLOBAL.spawnLoc;
 	_on_player_just_moved();
+
+## Make sure to call this after instantiating the room.
+func setCameraLimits() -> void:
+	assert(%RoomLayer.get_children().size() > 0);
+	var terrainNode = %RoomLayer.get_children()[0].get_node("Terrain");
+	var usedRect:Rect2 = terrainNode.get_used_rect();
+	var cellSize:Vector2i = terrainNode.tile_set.tile_size;
+	%WorldCam.limit_left = usedRect.position.x * cellSize.x;
+	%WorldCam.limit_top = usedRect.position.y * cellSize.y;
+	%WorldCam.limit_right = usedRect.end.x * cellSize.x;
+	%WorldCam.limit_bottom = usedRect.end.y * cellSize.y;
 
 ## parent has told us that input has stopped
 func stopFromParent() -> void:

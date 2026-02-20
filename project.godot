@@ -48,6 +48,7 @@ folder_colors={
 "res://assets/music/": "gray",
 "res://assets/sounds/": "gray",
 "res://data/": "orange",
+"res://data/Rooms/": "orange",
 "res://html5/": "red",
 "res://scenes/": "green",
 "res://scripts/": "purple",
