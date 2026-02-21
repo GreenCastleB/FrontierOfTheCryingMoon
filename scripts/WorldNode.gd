@@ -57,8 +57,10 @@ func doorwayEntered(_body:Node2D, notes:String) -> void:
 	stopFromParent();
 	call_deferred("loadNewRoom");
 
+signal reloadMePlease;
 func loadNewRoom() -> void:
-	get_tree().reload_current_scene();
+	printt("WorldNode ::", "loadNewRoom", "reloadMePlease");
+	reloadMePlease.emit();
 
 ## parent has told us that input has stopped
 func stopFromParent() -> void:
