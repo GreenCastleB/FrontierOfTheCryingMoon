@@ -82,9 +82,14 @@ func setupGroundStuffs() -> void:
 	var GroundStuffsArray = GroundStuffsNode.get_children();
 	for thisGroundStuffNode:CharacterBody2D in GroundStuffsArray:
 		printt("WorldNode ::", "setupGroundStuffs", "found stuff", thisGroundStuffNode.editor_description);
-		thisGroundStuffNode.get_node("Sprite").frame = int(thisGroundStuffNode.editor_description);
-		thisGroundStuffNode.get_node("TalkArea").body_entered.connect(GroundStuffEntered.bind(thisGroundStuffNode.editor_description, thisGroundStuffNode));
-		thisGroundStuffNode.get_node("TalkArea").body_exited.connect(GroundStuffExited.bind(thisGroundStuffNode.editor_description));
+		if GLOBAL.wasObjSpent(thisGroundStuffNode.name):
+			# this shouldn't be here
+			thisGroundStuffNode.queue_free();
+		else:
+			# ok to init groundstuff
+			thisGroundStuffNode.get_node("Sprite").frame = int(thisGroundStuffNode.editor_description);
+			thisGroundStuffNode.get_node("TalkArea").body_entered.connect(GroundStuffEntered.bind(thisGroundStuffNode.editor_description, thisGroundStuffNode));
+			thisGroundStuffNode.get_node("TalkArea").body_exited.connect(GroundStuffExited.bind(thisGroundStuffNode.editor_description));
 
 signal approachedNPC(whom:String);
 signal departedNPC(whom:String);
@@ -118,6 +123,7 @@ var currInteractableBody = null;
 func killInteractableFromParent() -> void:
 	printt("WorldNode ::", "killInteractableFromParent");
 	if currInteractableBody == null: return;
+	GLOBAL.registerAsSpent(currInteractableBody.name);
 	currInteractableBody.queue_free();
 
 func doorwayEntered(_body:Node2D, notes:String) -> void:

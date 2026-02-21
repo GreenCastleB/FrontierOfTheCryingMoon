@@ -7,6 +7,7 @@ var spawnLoc:Vector2 = Vector2.ZERO;
 var messageCardTxt:String = "stuff";
 
 var inventoryState:Dictionary = {};
+var _spentObjects:Array[String] = [];
 
 const workerData:Array[Dictionary] =\
 	[{"name" = "Gregg", "spriteIdx" = 0},
@@ -38,3 +39,16 @@ func setUpGame() -> void:
 	inventoryState["workers"] = [];
 	inventoryState["stuff"] = [];
 	inventoryState["interactable"] = null;
+	
+	_spentObjects = [];
+
+## an object with this name was spent; should not respawn
+func registerAsSpent(objName:StringName) -> void:
+	_spentObjects.append(str(spawnRoom) + ":" + objName);
+	printt("GLOBAL ::", "registerAsSpent", objName);
+	printt("GLOBAL ::", "_spentObjects", str(_spentObjects));
+func wasObjSpent(objName:StringName) -> bool:
+	printt("GLOBAL ::", "wasObjSpent", objName);
+	printt("GLOBAL ::", "_spentObjects", str(_spentObjects));
+	printt("GLOBAL ::", "returning", str(str(spawnRoom) + ":" + objName in _spentObjects));
+	return str(spawnRoom) + ":" + objName in _spentObjects;
