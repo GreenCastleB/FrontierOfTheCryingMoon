@@ -139,4 +139,6 @@ autoplay = &"RESET"
 
 [connection signal="roomLoaded" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_loaded"]
 [connection signal="roomReloading" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_reloading"]
+[connection signal="worldApproachingNPC" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_approaching_npc"]
+[connection signal="worldDepartingNPC" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_departing_npc"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_finished"]

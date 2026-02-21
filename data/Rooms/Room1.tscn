@@ -2,6 +2,112 @@
 
 [ext_resource type="TileSet" uid="uid://b5yaov3prbhqo" path="res://assets/terrain/TileSet_Terrain.tres" id="1_xujys"]
 [ext_resource type="TileSet" uid="uid://c3law6a1rgppu" path="res://assets/decor/TileSet_Decor.tres" id="2_0p04j"]
+[ext_resource type="Texture2D" uid="uid://w7iyxce83k66" path="res://assets/characters/workers-idle.png" id="3_0p04j"]
+[ext_resource type="Texture2D" uid="uid://c3sjcapjq3xka" path="res://assets/characters/bartender-idle.png" id="3_wwh7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwh7q"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltfno"]
+atlas = ExtResource("3_wwh7q")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h4r6"]
+atlas = ExtResource("3_wwh7q")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n0w1"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(0, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqfa5"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh2n4"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(36, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtwdu"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(54, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhm4"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(72, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8c14"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(90, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x408g"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(108, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0koi"]
+atlas = ExtResource("3_0p04j")
+region = Rect2(126, 0, 18, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltfno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltfno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h4r6")
+}],
+"loop": true,
+"name": &"bartender",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n0w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqfa5")
+}],
+"loop": true,
+"name": &"worker0",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh2n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwdu")
+}],
+"loop": true,
+"name": &"worker1",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8c14")
+}],
+"loop": true,
+"name": &"worker2",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x408g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0koi")
+}],
+"loop": true,
+"name": &"worker3",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6n0w1"]
+radius = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xujys"]
 size = Vector2(43, 81)
@@ -15,6 +121,26 @@ tile_set = ExtResource("1_xujys")
 [node name="Decor" type="TileMapLayer" parent="." unique_id=33279104]
 tile_map_data = PackedByteArray("AAD9//3/AQAEAAIAAAD9//7/AQAEAAMAAAD+//3/AQAFAAIAAAD+//7/AQAFAAMAAAD9/wEAAQAEAAYAAAD+/wEAAQAFAAYAAAA=")
 tile_set = ExtResource("2_0p04j")
+
+[node name="NPCs" type="Node2D" parent="." unique_id=1028029440]
+
+[node name="NPCNode" type="CharacterBody2D" parent="NPCs" unique_id=1747803569]
+editor_description = "bartender"
+position = Vector2(-33, -46)
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="NPCs/NPCNode" unique_id=1199906768]
+shape = SubResource("CircleShape2D_wwh7q")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="NPCs/NPCNode" unique_id=957758707]
+sprite_frames = SubResource("SpriteFrames_ltfno")
+animation = &"bartender"
+frame_progress = 0.92084146
+
+[node name="TalkArea" type="Area2D" parent="NPCs/NPCNode" unique_id=1589218938]
+
+[node name="Shape" type="CollisionShape2D" parent="NPCs/NPCNode/TalkArea" unique_id=1153812912]
+shape = SubResource("CircleShape2D_6n0w1")
 
 [node name="Doorways" type="Node2D" parent="." unique_id=548130772]
 

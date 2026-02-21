@@ -34,6 +34,8 @@ func _ready() -> void:
 	printt("WorldWindow ::", "_ready");
 	%WorldView.get_children()[0].reloadMePlease.connect(reloadWorld);
 	%WorldView.get_children()[0].doneLoading.connect(worldIsLoaded);
+	%WorldView.get_children()[0].approachedNPC.connect(playerApproachingNPC);
+	%WorldView.get_children()[0].departedNPC.connect(playerDepartingNPC);
 	
 	currState = STATE.LOADINGWORLD;
 
@@ -52,7 +54,6 @@ func inputFromParent(event: InputEvent) -> void:
 		WVKid.inputFromParent(event);
 
 signal roomReloading();
-signal roomLoaded();
 func reloadWorld() -> void:
 	printt("WorldWindow ::", "reloadWorld");
 	roomReloading.emit();
@@ -70,16 +71,33 @@ func doOutroAnim() -> void:
 func emptyWorldView() -> void:
 	var kidArray = %WorldView.get_children();
 	for thisKid in kidArray:
+		
 		thisKid.reloadMePlease.disconnect(reloadWorld);
+		thisKid.doneLoading.disconnect(worldIsLoaded);
+		thisKid.approachedNPC.disconnect(playerApproachingNPC);
+		thisKid.departedNPC.disconnect(playerDepartingNPC);
+		
 		%WorldView.remove_child(thisKid);
 	call_deferred("insertNewWorld");
 func insertNewWorld() -> void:
 	var newWorldNode = newWorldSCN.instantiate();
 	%WorldView.add_child(newWorldNode);
+	
 	newWorldNode.reloadMePlease.connect(reloadWorld);
 	newWorldNode.doneLoading.connect(worldIsLoaded);
+	newWorldNode.approachedNPC.connect(playerApproachingNPC);
+	newWorldNode.departedNPC.connect(playerDepartingNPC);
 	
 	currState = STATE.LOADINGWORLD;
 
+signal roomLoaded();
+signal worldApproachingNPC(whom:String);
+signal worldDepartingNPC(whom:String);
 func worldIsLoaded() -> void:
 	printt("WorldWindow ::", "worldIsLoaded");
+func playerApproachingNPC(whom) -> void:
+	printt("WorldWindow ::", "playerApproachingNPC");
+	worldApproachingNPC.emit(whom);
+func playerDepartingNPC(whom) -> void:
+	printt("WorldWindow ::", "playerDepartingNPC");
+	worldDepartingNPC.emit(whom);

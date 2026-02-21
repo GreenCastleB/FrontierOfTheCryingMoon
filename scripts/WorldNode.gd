@@ -2,8 +2,6 @@ extends Node2D
 
 # The World Node.
 
-const SPEED:int = 4;
-
 var InputUpKey:bool = false;
 var InputDownKey:bool = false;
 var InputLeftKey:bool = false;
@@ -34,10 +32,9 @@ func _ready() -> void:
 	var newRoom = newRoomSCN.instantiate();
 	%RoomLayer.add_child(newRoom);
 	
-	# set up doorways
 	setupDoorways();
+	setupNPCs();
 	
-	# set camera limits
 	setCameraLimits();
 	
 	# set player position
@@ -65,6 +62,28 @@ func setupDoorways() -> void:
 	for thisDoorNode:Area2D in doorwaysArray:
 		printt("WorldNode ::", "setupDoorways", "found door", thisDoorNode.editor_description);
 		thisDoorNode.body_entered.connect(doorwayEntered.bind(thisDoorNode.editor_description));
+
+## Make sure to call this after instantiating the room.
+func setupNPCs() -> void:
+	assert(%RoomLayer.get_children().size() > 0);
+	var NPCsNode = %RoomLayer.get_children()[0].get_node("NPCs");
+	var NPCsArray = NPCsNode.get_children();
+	for thisNPCNode:CharacterBody2D in NPCsArray:
+		printt("WorldNode ::", "setupNPCs", "found npc", thisNPCNode.editor_description);
+		thisNPCNode.get_node("Sprite").play(thisNPCNode.editor_description);
+		thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description));
+		thisNPCNode.get_node("TalkArea").body_exited.connect(NPCExited.bind(thisNPCNode.editor_description));
+
+signal approachedNPC(whom:String);
+signal departedNPC(whom:String);
+func NPCEntered(body:Node2D, notes:String) -> void:
+	printt("WorldNode ::", "NPCEntered", body.name, notes);
+	if body.name != "Player": return;
+	approachedNPC.emit(notes);
+func NPCExited(body:Node2D, notes:String) -> void:
+	printt("WorldNode ::", "NPCExited", body.name, notes);
+	if body.name != "Player": return;
+	departedNPC.emit(notes);
 
 func doorwayEntered(_body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "doorwayEntered", notes);

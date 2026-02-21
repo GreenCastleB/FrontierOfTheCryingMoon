@@ -51,3 +51,10 @@ func _on_world_window_room_loaded() -> void:
 func _on_world_window_room_reloading() -> void:
 	printt("MainNode ::", "_on_world_window_room_reloading");
 	currState = STATE.ROOM_XFER;
+
+
+func _on_world_window_world_approaching_npc(whom: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_approaching_npc", whom);
+
+func _on_world_window_world_departing_npc(whom: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_departing_npc", whom);
