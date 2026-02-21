@@ -56,7 +56,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6n0w1"]
-radius = 28.0
+radius = 16.0
 
 [node name="GroundStuffNode1" type="CharacterBody2D" unique_id=1320185317]
 editor_description = "bartender"

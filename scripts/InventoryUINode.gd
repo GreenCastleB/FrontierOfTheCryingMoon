@@ -57,7 +57,7 @@ func updateFromInvState() -> void:
 				iconTexture.region.position.x = 20 * 10;
 				%TalkToIcon.show();
 				%TalkButton.show();
-				%TalkToVerb.text = "Talk";
+				%TalkToVerb.text = "Check";
 			Interactable.TYPE.WORKER:
 				%TalkToLabel.text = GLOBAL.workerData[thisInteractable.myIdx]["name"];
 				var iconTexture:AtlasTexture = %TalkToIcon.texture;
@@ -72,3 +72,20 @@ func updateFromInvState() -> void:
 				%TalkToIcon.show();
 				%TalkButton.show();
 				%TalkToVerb.text = "Get";
+
+signal pickedUpGroundStuff();
+signal talkToButtonPressed();
+func _on_TalkTo_button_pressed() -> void:
+	var thisInteractable:Interactable = GLOBAL.inventoryState["interactable"];
+	if thisInteractable == null: return;
+	match thisInteractable.myType:
+		Interactable.TYPE.BARTENDER:
+			talkToButtonPressed.emit();
+		Interactable.TYPE.WORKER:
+			talkToButtonPressed.emit();
+		Interactable.TYPE.STUFFITEM:
+			# pick up item immediately
+			GLOBAL.inventoryState["stuff"].append(thisInteractable.myIdx);
+			GLOBAL.inventoryState["interactable"] = null;
+			updateFromInvState();
+			pickedUpGroundStuff.emit();

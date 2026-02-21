@@ -55,6 +55,12 @@ func inputFromParent(event: InputEvent) -> void:
 	if WVKid != null:
 		WVKid.inputFromParent(event);
 
+## parent is telling us that the currently interacted with item should be removed
+func killInteractableFromParent() -> void:
+	var WVKid = %WorldView.get_child(0);
+	if WVKid != null:
+		WVKid.killInteractableFromParent();
+
 signal roomReloading();
 func reloadWorld() -> void:
 	printt("WorldWindow ::", "reloadWorld");
@@ -78,8 +84,8 @@ func emptyWorldView() -> void:
 		thisKid.doneLoading.disconnect(worldIsLoaded);
 		thisKid.approachedNPC.disconnect(playerApproachingNPC);
 		thisKid.departedNPC.disconnect(playerDepartingNPC);
-		thisKid.approachedNPC.disconnect(playerApproachingGroundStuff);
-		thisKid.departedNPC.disconnect(playerDepartingGroundStuff);
+		thisKid.approachedGroundStuff.disconnect(playerApproachingGroundStuff);
+		thisKid.departedGroundStuff.disconnect(playerDepartingGroundStuff);
 		
 		%WorldView.remove_child(thisKid);
 	call_deferred("insertNewWorld");
@@ -91,8 +97,8 @@ func insertNewWorld() -> void:
 	newWorldNode.doneLoading.connect(worldIsLoaded);
 	newWorldNode.approachedNPC.connect(playerApproachingNPC);
 	newWorldNode.departedNPC.connect(playerDepartingNPC);
-	newWorldNode.approachedNPC.connect(playerApproachingGroundStuff);
-	newWorldNode.departedNPC.connect(playerDepartingGroundStuff);
+	newWorldNode.approachedGroundStuff.connect(playerApproachingGroundStuff);
+	newWorldNode.departedGroundStuff.connect(playerDepartingGroundStuff);
 	
 	currState = STATE.LOADINGWORLD;
 

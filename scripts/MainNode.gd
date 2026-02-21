@@ -82,3 +82,11 @@ func _on_world_window_world_departing_ground_stuff(what: String) -> void:
 	printt("MainNode ::", "_on_world_window_world_departing_ground_stuff", what);
 	GLOBAL.inventoryState["interactable"] = null;
 	%InventoryUI.updateFromInvState();
+
+
+func _on_inventory_ui_picked_up_ground_stuff() -> void:
+	printt("MainNode ::", "_on_inventory_ui_picked_up_ground_stuff");
+	%WorldWindow.killInteractableFromParent();
+
+func _on_inventory_ui_talk_to_button_pressed() -> void:
+	pass # Replace with function body.

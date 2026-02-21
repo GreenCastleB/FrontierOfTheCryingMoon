@@ -218,3 +218,5 @@ texture_pressed = ExtResource("11_u03wm")
 shape = SubResource("RectangleShape2D_rhf62")
 shape_visible = false
 action = "ui_right"
+
+[connection signal="pressed" from="Background/MarginContainer/MenuContainer/TalkToHBox/TalkButton" to="." method="_on_TalkTo_button_pressed"]

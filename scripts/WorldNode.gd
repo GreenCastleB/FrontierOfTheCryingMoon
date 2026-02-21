@@ -72,7 +72,7 @@ func setupNPCs() -> void:
 	for thisNPCNode:CharacterBody2D in NPCsArray:
 		printt("WorldNode ::", "setupNPCs", "found npc", thisNPCNode.editor_description);
 		thisNPCNode.get_node("Sprite").play(thisNPCNode.editor_description);
-		thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description));
+		thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description, thisNPCNode));
 		thisNPCNode.get_node("TalkArea").body_exited.connect(NPCExited.bind(thisNPCNode.editor_description));
 
 ## Make sure to call this after instantiating the room.
@@ -83,30 +83,42 @@ func setupGroundStuffs() -> void:
 	for thisGroundStuffNode:CharacterBody2D in GroundStuffsArray:
 		printt("WorldNode ::", "setupGroundStuffs", "found stuff", thisGroundStuffNode.editor_description);
 		thisGroundStuffNode.get_node("Sprite").frame = int(thisGroundStuffNode.editor_description);
-		thisGroundStuffNode.get_node("TalkArea").body_entered.connect(GroundStuffEntered.bind(thisGroundStuffNode.editor_description));
+		thisGroundStuffNode.get_node("TalkArea").body_entered.connect(GroundStuffEntered.bind(thisGroundStuffNode.editor_description, thisGroundStuffNode));
 		thisGroundStuffNode.get_node("TalkArea").body_exited.connect(GroundStuffExited.bind(thisGroundStuffNode.editor_description));
 
 signal approachedNPC(whom:String);
 signal departedNPC(whom:String);
-func NPCEntered(body:Node2D, notes:String) -> void:
+func NPCEntered(body:Node2D, notes:String, linkback) -> void:
 	printt("WorldNode ::", "NPCEntered", body.name, notes);
 	if body.name != "Player": return;
+	currInteractableBody = linkback;
 	approachedNPC.emit(notes);
 func NPCExited(body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "NPCExited", body.name, notes);
 	if body.name != "Player": return;
+	currInteractableBody = null;
 	departedNPC.emit(notes);
 
 signal approachedGroundStuff(whom:String);
 signal departedGroundStuff(whom:String);
-func GroundStuffEntered(body:Node2D, notes:String) -> void:
+func GroundStuffEntered(body:Node2D, notes:String, linkback) -> void:
 	printt("WorldNode ::", "GroundStuffEntered", body.name, notes);
 	if body.name != "Player": return;
+	currInteractableBody = linkback;
 	approachedGroundStuff.emit(notes);
 func GroundStuffExited(body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "GroundStuffExited", body.name, notes);
 	if body.name != "Player": return;
+	currInteractableBody = null;
 	departedGroundStuff.emit(notes);
+
+var currInteractableBody = null;
+## parent is telling us that we need to eliminate the body we just interacted with
+## because, for instance, it's an item that's been picked up
+func killInteractableFromParent() -> void:
+	printt("WorldNode ::", "killInteractableFromParent");
+	if currInteractableBody == null: return;
+	currInteractableBody.queue_free();
 
 func doorwayEntered(_body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "doorwayEntered", notes);

@@ -137,6 +137,8 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rarhs")
 autoplay = &"RESET"
 
+[connection signal="pickedUpGroundStuff" from="UIRegionBox/InventoryUI" to="." method="_on_inventory_ui_picked_up_ground_stuff"]
+[connection signal="talkToButtonPressed" from="UIRegionBox/InventoryUI" to="." method="_on_inventory_ui_talk_to_button_pressed"]
 [connection signal="roomLoaded" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_loaded"]
 [connection signal="roomReloading" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_reloading"]
 [connection signal="worldApproachingGroundStuff" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_approaching_ground_stuff"]
