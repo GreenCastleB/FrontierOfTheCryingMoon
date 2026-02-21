@@ -34,6 +34,7 @@ func _ready() -> void:
 	
 	setupDoorways();
 	setupNPCs();
+	setupGroundStuffs();
 	
 	setCameraLimits();
 	
@@ -74,6 +75,17 @@ func setupNPCs() -> void:
 		thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description));
 		thisNPCNode.get_node("TalkArea").body_exited.connect(NPCExited.bind(thisNPCNode.editor_description));
 
+## Make sure to call this after instantiating the room.
+func setupGroundStuffs() -> void:
+	assert(%RoomLayer.get_children().size() > 0);
+	var GroundStuffsNode = %RoomLayer.get_children()[0].get_node("GroundStuffs");
+	var GroundStuffsArray = GroundStuffsNode.get_children();
+	for thisGroundStuffNode:CharacterBody2D in GroundStuffsArray:
+		printt("WorldNode ::", "setupGroundStuffs", "found stuff", thisGroundStuffNode.editor_description);
+		thisGroundStuffNode.get_node("Sprite").frame = int(thisGroundStuffNode.editor_description);
+		thisGroundStuffNode.get_node("TalkArea").body_entered.connect(GroundStuffEntered.bind(thisGroundStuffNode.editor_description));
+		thisGroundStuffNode.get_node("TalkArea").body_exited.connect(GroundStuffExited.bind(thisGroundStuffNode.editor_description));
+
 signal approachedNPC(whom:String);
 signal departedNPC(whom:String);
 func NPCEntered(body:Node2D, notes:String) -> void:
@@ -84,6 +96,17 @@ func NPCExited(body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "NPCExited", body.name, notes);
 	if body.name != "Player": return;
 	departedNPC.emit(notes);
+
+signal approachedGroundStuff(whom:String);
+signal departedGroundStuff(whom:String);
+func GroundStuffEntered(body:Node2D, notes:String) -> void:
+	printt("WorldNode ::", "GroundStuffEntered", body.name, notes);
+	if body.name != "Player": return;
+	approachedGroundStuff.emit(notes);
+func GroundStuffExited(body:Node2D, notes:String) -> void:
+	printt("WorldNode ::", "GroundStuffExited", body.name, notes);
+	if body.name != "Player": return;
+	departedGroundStuff.emit(notes);
 
 func doorwayEntered(_body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "doorwayEntered", notes);

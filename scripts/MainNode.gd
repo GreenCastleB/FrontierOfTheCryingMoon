@@ -55,6 +55,30 @@ func _on_world_window_room_reloading() -> void:
 
 func _on_world_window_world_approaching_npc(whom: String) -> void:
 	printt("MainNode ::", "_on_world_window_world_approaching_npc", whom);
+	match whom:
+		"bartender":
+			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.BARTENDER, 0);
+		"worker0":
+			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 0);
+		"worker1":
+			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 1);
+		"worker2":
+			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 2);
+		"worker3":
+			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 3);
+	%InventoryUI.updateFromInvState();
 
 func _on_world_window_world_departing_npc(whom: String) -> void:
 	printt("MainNode ::", "_on_world_window_world_departing_npc", whom);
+	GLOBAL.inventoryState["interactable"] = null;
+	%InventoryUI.updateFromInvState();
+
+func _on_world_window_world_approaching_ground_stuff(what: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_approaching_ground_stuff", what);
+	GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.STUFFITEM, int(what));
+	%InventoryUI.updateFromInvState();
+
+func _on_world_window_world_departing_ground_stuff(what: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_departing_ground_stuff", what);
+	GLOBAL.inventoryState["interactable"] = null;
+	%InventoryUI.updateFromInvState();

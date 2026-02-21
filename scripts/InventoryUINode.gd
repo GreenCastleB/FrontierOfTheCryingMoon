@@ -43,8 +43,32 @@ func updateFromInvState() -> void:
 			
 			%StuffGrid.get_node("StuffNode"+str(i)).show();
 	
-	if GLOBAL.inventoryState["interactable"] == null:
+	var thisInteractable:Interactable = GLOBAL.inventoryState["interactable"];
+	if thisInteractable == null:
 		%TalkToLabel.text = "";
 		%TalkToIcon.hide();
 		%TalkButton.hide();
 		%TalkToVerb.text = "";
+	else:
+		match thisInteractable.myType:
+			Interactable.TYPE.BARTENDER:
+				%TalkToLabel.text = "Bartender";
+				var iconTexture:AtlasTexture = %TalkToIcon.texture;
+				iconTexture.region.position.x = 20 * 10;
+				%TalkToIcon.show();
+				%TalkButton.show();
+				%TalkToVerb.text = "Talk";
+			Interactable.TYPE.WORKER:
+				%TalkToLabel.text = GLOBAL.workerData[thisInteractable.myIdx]["name"];
+				var iconTexture:AtlasTexture = %TalkToIcon.texture;
+				iconTexture.region.position.x = 20 * thisInteractable.myIdx;
+				%TalkToIcon.show();
+				%TalkButton.show();
+				%TalkToVerb.text = "Talk";
+			Interactable.TYPE.STUFFITEM:
+				%TalkToLabel.text = GLOBAL.stuffData[thisInteractable.myIdx]["name"];
+				var iconTexture:AtlasTexture = %TalkToIcon.texture;
+				iconTexture.region.position.x = 20 * (thisInteractable.myIdx + 4);
+				%TalkToIcon.show();
+				%TalkButton.show();
+				%TalkToVerb.text = "Get";

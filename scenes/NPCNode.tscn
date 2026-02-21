@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://i6revc45a2p8"]
+
+[ext_resource type="Texture2D" uid="uid://c3sjcapjq3xka" path="res://assets/characters/bartender-idle.png" id="1_1qax2"]
+[ext_resource type="Texture2D" uid="uid://w7iyxce83k66" path="res://assets/characters/workers-idle.png" id="2_8yghl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwh7q"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltfno"]
+atlas = ExtResource("1_1qax2")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h4r6"]
+atlas = ExtResource("1_1qax2")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n0w1"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(0, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqfa5"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh2n4"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(36, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtwdu"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(54, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhm4"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(72, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8c14"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(90, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x408g"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(108, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0koi"]
+atlas = ExtResource("2_8yghl")
+region = Rect2(126, 0, 18, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltfno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltfno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h4r6")
+}],
+"loop": true,
+"name": &"bartender",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n0w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqfa5")
+}],
+"loop": true,
+"name": &"worker0",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh2n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwdu")
+}],
+"loop": true,
+"name": &"worker1",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8c14")
+}],
+"loop": true,
+"name": &"worker2",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x408g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0koi")
+}],
+"loop": true,
+"name": &"worker3",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6n0w1"]
+radius = 28.0
+
+[node name="NPCNode1" type="CharacterBody2D" unique_id=1320185317]
+editor_description = "bartender"
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1450537293]
+shape = SubResource("CircleShape2D_wwh7q")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=716291146]
+sprite_frames = SubResource("SpriteFrames_ltfno")
+animation = &"bartender"
+frame_progress = 0.79994303
+
+[node name="TalkArea" type="Area2D" parent="." unique_id=2087238629]
+
+[node name="Shape" type="CollisionShape2D" parent="TalkArea" unique_id=416904451]
+shape = SubResource("CircleShape2D_6n0w1")

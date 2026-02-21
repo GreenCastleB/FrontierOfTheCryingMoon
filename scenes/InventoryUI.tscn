@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_nvcdf"]
 [ext_resource type="Texture2D" uid="uid://hhr5aldpocfo" path="res://assets/ui/dpad_up.png" id="5_141ln"]
 [ext_resource type="Texture2D" uid="uid://ds2o1awck45r2" path="res://assets/ui/dpadD_left.png" id="5_d0rvq"]
-[ext_resource type="Texture2D" uid="uid://ckjvv08pg0r11" path="res://assets/characters/worker_icons.png" id="5_gxnuj"]
+[ext_resource type="Texture2D" uid="uid://b627n7qb0rqrf" path="res://assets/ui/interactable_icons.png" id="5_gxnuj"]
 [ext_resource type="Texture2D" uid="uid://d4gncxav7hsj0" path="res://assets/ui/smallerbtn.png" id="6_0k2hi"]
 [ext_resource type="Texture2D" uid="uid://cyok08w4ldo7j" path="res://assets/ui/dpad_down.png" id="6_tbtli"]
 [ext_resource type="Texture2D" uid="uid://dmm8kj6kx4xkr" path="res://assets/ui/dpadD_up.png" id="7_4jdrs"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c5rxovlrkhhi8" path="res://assets/ui/dpadD_down.png" id="9_a70b0"]
 [ext_resource type="Texture2D" uid="uid://ctfeyxwqnwwam" path="res://assets/ui/dpadD_right.png" id="11_u03wm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxq26"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k2hi"]
 atlas = ExtResource("5_gxnuj")
 region = Rect2(0, 0, 20, 20)
 
@@ -62,7 +62,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="MenuContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=1045534536]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 3
 
 [node name="WorkersLabel" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=196059479]
 layout_mode = 2
@@ -133,12 +133,13 @@ label_settings = ExtResource("2_ju2k0")
 
 [node name="TalkToHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=691660912]
 layout_mode = 2
+size_flags_vertical = 0
 alignment = 1
 
 [node name="TalkToIcon" type="TextureRect" parent="Background/MarginContainer/MenuContainer/TalkToHBox" unique_id=680116237]
 unique_name_in_owner = true
 layout_mode = 2
-texture = SubResource("AtlasTexture_mxq26")
+texture = SubResource("AtlasTexture_0k2hi")
 stretch_mode = 2
 
 [node name="TalkButton" type="TextureButton" parent="Background/MarginContainer/MenuContainer/TalkToHBox" unique_id=959316150]
@@ -171,6 +172,7 @@ size_flags_vertical = 3
 
 [node name="TSBtnsHBox" type="HBoxContainer" parent="Background/MarginContainer/MenuContainer" unique_id=590510190]
 layout_mode = 2
+size_flags_vertical = 8
 alignment = 1
 
 [node name="TSBtn1" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=444114934]

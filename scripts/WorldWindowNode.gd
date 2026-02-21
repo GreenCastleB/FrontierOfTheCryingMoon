@@ -36,6 +36,8 @@ func _ready() -> void:
 	%WorldView.get_children()[0].doneLoading.connect(worldIsLoaded);
 	%WorldView.get_children()[0].approachedNPC.connect(playerApproachingNPC);
 	%WorldView.get_children()[0].departedNPC.connect(playerDepartingNPC);
+	%WorldView.get_children()[0].approachedGroundStuff.connect(playerApproachingGroundStuff);
+	%WorldView.get_children()[0].departedGroundStuff.connect(playerDepartingGroundStuff);
 	
 	currState = STATE.LOADINGWORLD;
 
@@ -76,6 +78,8 @@ func emptyWorldView() -> void:
 		thisKid.doneLoading.disconnect(worldIsLoaded);
 		thisKid.approachedNPC.disconnect(playerApproachingNPC);
 		thisKid.departedNPC.disconnect(playerDepartingNPC);
+		thisKid.approachedNPC.disconnect(playerApproachingGroundStuff);
+		thisKid.departedNPC.disconnect(playerDepartingGroundStuff);
 		
 		%WorldView.remove_child(thisKid);
 	call_deferred("insertNewWorld");
@@ -87,12 +91,16 @@ func insertNewWorld() -> void:
 	newWorldNode.doneLoading.connect(worldIsLoaded);
 	newWorldNode.approachedNPC.connect(playerApproachingNPC);
 	newWorldNode.departedNPC.connect(playerDepartingNPC);
+	newWorldNode.approachedNPC.connect(playerApproachingGroundStuff);
+	newWorldNode.departedNPC.connect(playerDepartingGroundStuff);
 	
 	currState = STATE.LOADINGWORLD;
 
 signal roomLoaded();
 signal worldApproachingNPC(whom:String);
 signal worldDepartingNPC(whom:String);
+signal worldApproachingGroundStuff(what:String);
+signal worldDepartingGroundStuff(what:String);
 func worldIsLoaded() -> void:
 	printt("WorldWindow ::", "worldIsLoaded");
 func playerApproachingNPC(whom) -> void:
@@ -101,3 +109,9 @@ func playerApproachingNPC(whom) -> void:
 func playerDepartingNPC(whom) -> void:
 	printt("WorldWindow ::", "playerDepartingNPC");
 	worldDepartingNPC.emit(whom);
+func playerApproachingGroundStuff(what) -> void:
+	printt("WorldWindow ::", "playerApproachingGroundStuff");
+	worldApproachingGroundStuff.emit(what);
+func playerDepartingGroundStuff(what) -> void:
+	printt("WorldWindow ::", "playerDepartingGroundStuff");
+	worldDepartingGroundStuff.emit(what);
