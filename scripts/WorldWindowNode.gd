@@ -4,9 +4,38 @@ extends Control
 
 var newWorldSCN:PackedScene = preload("res://scenes/WorldNode.tscn");
 
+## State machine for WorldWindow.
+enum STATE {INIT, LOADINGWORLD, READY, LEAVINGROOM};
+const STATESTR:Array = ['INIT', 'LOADINGWORLD', 'READY', 'LEAVINGROOM'];
+var currState:STATE = STATE.INIT:
+	set(newState):
+		var oldState:STATE = currState;
+		currState = newState;
+		var stateChange:String = STATESTR[oldState] + "->" + STATESTR[newState];
+		printt("WorldWindow ::", "stateChange", stateChange);
+		
+		if newState == STATE.LOADINGWORLD:
+			call_deferred("doIntroAnim");
+		if newState == STATE.LEAVINGROOM:
+			call_deferred("doOutroAnim");
+
+func doIntroAnim() -> void:
+	%XferRect.material.set_shader_parameter("progress", 1.0);
+	%XferRect.show();
+	var tween = get_tree().create_tween();
+	tween.tween_method(func(value): %XferRect.material.set_shader_parameter("progress", value), 1.0, 0.0, 1.00);
+	await tween.finished;
+	%XferRect.hide();
+	
+	currState = STATE.READY;
+	roomLoaded.emit();
+
 func _ready() -> void:
 	printt("WorldWindow ::", "_ready");
 	%WorldView.get_children()[0].reloadMePlease.connect(reloadWorld);
+	%WorldView.get_children()[0].doneLoading.connect(worldIsLoaded);
+	
+	currState = STATE.LOADINGWORLD;
 
 ## parent has told us that input has stopped
 func stopFromParent() -> void:
@@ -22,13 +51,35 @@ func inputFromParent(event: InputEvent) -> void:
 	if WVKid != null:
 		WVKid.inputFromParent(event);
 
+signal roomReloading();
+signal roomLoaded();
 func reloadWorld() -> void:
 	printt("WorldWindow ::", "reloadWorld");
+	roomReloading.emit();
+	
+	currState = STATE.LEAVINGROOM;
+func doOutroAnim() -> void:
+	%XferRect.material.set_shader_parameter("progress", 0.0);
+	%XferRect.show();
+	var tween = get_tree().create_tween();
+	tween.tween_method(func(value): %XferRect.material.set_shader_parameter("progress", value), 0.0, 1.0, 1.00);
+	await tween.finished;
+	%XferRect.hide();
+	
+	call_deferred("emptyWorldView");
+func emptyWorldView() -> void:
 	var kidArray = %WorldView.get_children();
 	for thisKid in kidArray:
 		thisKid.reloadMePlease.disconnect(reloadWorld);
 		%WorldView.remove_child(thisKid);
-	
+	call_deferred("insertNewWorld");
+func insertNewWorld() -> void:
 	var newWorldNode = newWorldSCN.instantiate();
 	%WorldView.add_child(newWorldNode);
 	newWorldNode.reloadMePlease.connect(reloadWorld);
+	newWorldNode.doneLoading.connect(worldIsLoaded);
+	
+	currState = STATE.LOADINGWORLD;
+
+func worldIsLoaded() -> void:
+	printt("WorldWindow ::", "worldIsLoaded");

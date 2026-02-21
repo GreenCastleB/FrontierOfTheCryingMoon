@@ -137,4 +137,6 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_rarhs")
 autoplay = &"RESET"
 
+[connection signal="roomLoaded" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_loaded"]
+[connection signal="roomReloading" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_room_reloading"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_finished"]

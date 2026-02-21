@@ -9,6 +9,22 @@ var InputDownKey:bool = false;
 var InputLeftKey:bool = false;
 var InputRightKey:bool = false;
 
+## State machine for WorldNode.
+enum STATE {INIT, READY, EXIT};
+const STATESTR:Array = ['INIT', 'READY', 'EXIT'];
+var currState:STATE = STATE.INIT:
+	set(newState):
+		var oldState:STATE = currState;
+		currState = newState;
+		var stateChange:String = STATESTR[oldState] + "->" + STATESTR[newState];
+		printt("WorldNode ::", "stateChange", stateChange);
+		
+		if newState == STATE.READY:
+			doneLoading.emit();
+		if newState == STATE.EXIT:
+			loadNewRoom();
+
+signal doneLoading();
 func _ready() -> void:
 	printt("WorldNode ::", "_ready");
 	printt("WorldNode ::", "spawning in room " + str(GLOBAL.spawnRoom), "loc " + str(GLOBAL.spawnLoc));
@@ -27,6 +43,8 @@ func _ready() -> void:
 	# set player position
 	%Player.position = GLOBAL.spawnLoc;
 	_on_player_just_moved();
+	
+	currState = STATE.READY;
 
 ## Make sure to call this after instantiating the room.
 func setCameraLimits() -> void:
@@ -55,7 +73,7 @@ func doorwayEntered(_body:Node2D, notes:String) -> void:
 	GLOBAL.spawnLoc = Vector2i(int(notesExp[1]), int(notesExp[2]));
 	
 	stopFromParent();
-	call_deferred("loadNewRoom");
+	currState = STATE.EXIT;
 
 signal reloadMePlease;
 func loadNewRoom() -> void:
@@ -74,6 +92,8 @@ func stopFromParent() -> void:
 
 ## process input that has been passed down from the parent
 func inputFromParent(event: InputEvent) -> void:
+	if currState != STATE.READY: return;
+	
 	if event.is_action_pressed("ui_up"):
 		InputUpKey = true;
 		%Player.DIRECTION.y = -1;

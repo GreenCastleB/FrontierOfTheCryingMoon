@@ -47,7 +47,7 @@ theme_override_constants/separation = -6
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/MainVBox/CenterTitle/TitleStuffContainer" unique_id=1984820961]
 layout_mode = 2
-text = "Zenith's Last Stand"
+text = "Frontier of the Crying Moon"
 label_settings = ExtResource("2_ab78a")
 horizontal_alignment = 1
 

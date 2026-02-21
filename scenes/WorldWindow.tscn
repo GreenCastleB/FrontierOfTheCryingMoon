@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cebiqt2ntschl" path="res://scenes/WorldNode.tscn" id="1_kyo8p"]
 [ext_resource type="Script" uid="uid://dpp7bge6umtxp" path="res://scripts/WorldWindowNode.gd" id="1_xnnib"]
+[ext_resource type="Shader" uid="uid://c2rehh57f6jsi" path="res://shaders/XferDiamond.gdshader" id="3_lpp2b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sh73"]
+shader = ExtResource("3_lpp2b")
+shader_parameter/progress = 1.0
 
 [node name="WorldWindow" type="Control" unique_id=1409088015]
 custom_minimum_size = Vector2(206, 172)
@@ -33,3 +38,18 @@ size = Vector2i(208, 172)
 render_target_update_mode = 4
 
 [node name="WorldNode" parent="ViewContainer/WorldView" unique_id=477839040 instance=ExtResource("1_kyo8p")]
+
+[node name="XferRect" type="ColorRect" parent="." unique_id=1573688684]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2sh73")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8745098, 0.8745098, 0.67058825, 1)

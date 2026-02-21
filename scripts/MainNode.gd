@@ -3,8 +3,8 @@ extends MarginContainer
 # The Main Node
 
 ## State machine for Main Node.
-enum STATE {INIT, WALKING, ENTER_DIALOG, DIALOG, EXIT_DIALOG};
-const STATESTR:Array = ['INIT', 'WALKING', 'ENTER_DIALOG', 'DIALOG', 'EXIT_DIALOG'];
+enum STATE {INIT, WALKING, ENTER_DIALOG, DIALOG, EXIT_DIALOG, ROOM_XFER};
+const STATESTR:Array = ['INIT', 'WALKING', 'ENTER_DIALOG', 'DIALOG', 'EXIT_DIALOG', 'ROOM_XFER'];
 var currState:STATE = STATE.INIT:
 	set(newState):
 		var oldState:STATE = currState;
@@ -27,7 +27,6 @@ var currState:STATE = STATE.INIT:
 func _ready() -> void:
 	printt("MainNode ::", "_ready");
 	MUSIC.playDayTheme();
-	currState = STATE.WALKING;
 
 func _input(event: InputEvent) -> void:
 	if currState in [STATE.WALKING]:
@@ -44,3 +43,11 @@ func _on_anim_finished(anim_name: StringName) -> void:
 		"EXIT_DIALOG:HideDialog":
 			%DialogUI.hide();
 			currState = STATE.WALKING;
+
+func _on_world_window_room_loaded() -> void:
+	printt("MainNode ::", "_on_world_window_room_loaded");
+	currState = STATE.WALKING;
+
+func _on_world_window_room_reloading() -> void:
+	printt("MainNode ::", "_on_world_window_room_reloading");
+	currState = STATE.ROOM_XFER;

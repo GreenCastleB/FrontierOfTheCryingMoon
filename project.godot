@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Zenith's Last Stand"
+config/name="Frontier of the Crying Moon"
 config/description="Made for a Bite Size Game Jam
 w/ HyperPixel & Timconceivable
 February 2026"
