@@ -23,6 +23,8 @@ var currState:STATE = STATE.INIT:
 				%Anim.play("HideDialog");
 			"EXIT_DIALOG->WALKING":
 				pass;
+		
+		%InventoryUI.setTSBtnsVisible(newState == STATE.WALKING);
 
 func _ready() -> void:
 	printt("MainNode ::", "_ready");
@@ -32,6 +34,10 @@ func _input(event: InputEvent) -> void:
 	if currState in [STATE.WALKING]:
 		# pass input into WorldWindow who will pass it to WorldNode
 		%WorldWindow.inputFromParent(event);
+	if currState in [STATE.DIALOG]:
+		# if dialog is open, cancel or left should get out of it
+		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_left"):
+			currState = STATE.EXIT_DIALOG;
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	var animFin:String = STATESTR[currState] + ":" + anim_name;
@@ -89,4 +95,8 @@ func _on_inventory_ui_picked_up_ground_stuff() -> void:
 	%WorldWindow.killInteractableFromParent();
 
 func _on_inventory_ui_talk_to_button_pressed() -> void:
-	pass # Replace with function body.
+	printt("MainNode ::", "_on_inventory_ui_talk_to_button_pressed");
+	if currState in [STATE.WALKING]:
+		%DialogUI.prepareForInteraction();
+		%InventoryUI.clearInteractable();
+		currState = STATE.ENTER_DIALOG;

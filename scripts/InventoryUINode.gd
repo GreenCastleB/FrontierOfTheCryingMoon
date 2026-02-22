@@ -16,6 +16,18 @@ func _ready() -> void:
 	printt("InventoryUI ::", "_ready");
 	updateFromInvState();
 
+## shows or hides touchscreen buttons at bottom
+## this should be called for gameplay reasons, not based on env sniffing
+func setTSBtnsVisible(newState:bool) -> void:
+	%TSBtnsHBox.visible = newState;
+
+## hides button and labels for interactable section
+func clearInteractable() -> void:
+	%TalkToLabel.text = "";
+	%TalkToIcon.hide();
+	%TalkButton.hide();
+	%TalkToVerb.text = "";
+
 ## reads GLOBAL.inventoryState and updates visual status
 func updateFromInvState() -> void:
 	printt("InventoryUI ::", "updateFromInvState", str(GLOBAL.inventoryState["workers"].size()), str(GLOBAL.inventoryState["stuff"].size()));
@@ -45,10 +57,7 @@ func updateFromInvState() -> void:
 	
 	var thisInteractable:Interactable = GLOBAL.inventoryState["interactable"];
 	if thisInteractable == null:
-		%TalkToLabel.text = "";
-		%TalkToIcon.hide();
-		%TalkButton.hide();
-		%TalkToVerb.text = "";
+		clearInteractable();
 	else:
 		match thisInteractable.myType:
 			Interactable.TYPE.BARTENDER:

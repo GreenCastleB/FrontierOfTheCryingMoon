@@ -14,3 +14,8 @@ const FULL_SIZE:int = 102;
 
 func _ready() -> void:
 	printt("DialogUI ::", "_ready");
+
+func prepareForInteraction() -> void:
+	var target:Interactable = GLOBAL.inventoryState["interactable"];
+	assert(target != null);
+	printt("DialogUI ::", "prepareForInteraction with", target.name);
