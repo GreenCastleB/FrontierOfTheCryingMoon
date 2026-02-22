@@ -71,9 +71,14 @@ func setupNPCs() -> void:
 	var NPCsArray = NPCsNode.get_children();
 	for thisNPCNode:CharacterBody2D in NPCsArray:
 		printt("WorldNode ::", "setupNPCs", "found npc", thisNPCNode.editor_description);
-		thisNPCNode.get_node("Sprite").play(thisNPCNode.editor_description);
-		thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description, thisNPCNode));
-		thisNPCNode.get_node("TalkArea").body_exited.connect(NPCExited.bind(thisNPCNode.editor_description));
+		if GLOBAL.isNPCWorking(thisNPCNode.editor_description):
+			# this shouldn't be here
+			thisNPCNode.queue_free();
+		else:
+			# ok to init NPC
+			thisNPCNode.get_node("Sprite").play(thisNPCNode.editor_description);
+			thisNPCNode.get_node("TalkArea").body_entered.connect(NPCEntered.bind(thisNPCNode.editor_description, thisNPCNode));
+			thisNPCNode.get_node("TalkArea").body_exited.connect(NPCExited.bind(thisNPCNode.editor_description));
 
 ## Make sure to call this after instantiating the room.
 func setupGroundStuffs() -> void:

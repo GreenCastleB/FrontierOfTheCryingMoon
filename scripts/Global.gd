@@ -48,7 +48,10 @@ func registerAsSpent(objName:StringName) -> void:
 	printt("GLOBAL ::", "registerAsSpent", objName);
 	printt("GLOBAL ::", "_spentObjects", str(_spentObjects));
 func wasObjSpent(objName:StringName) -> bool:
-	printt("GLOBAL ::", "wasObjSpent", objName);
-	printt("GLOBAL ::", "_spentObjects", str(_spentObjects));
-	printt("GLOBAL ::", "returning", str(str(spawnRoom) + ":" + objName in _spentObjects));
 	return str(spawnRoom) + ":" + objName in _spentObjects;
+
+## if frameName is a worker#, is that worker currently working?
+func isNPCWorking(frameName:String) -> bool:
+	for thisWorker:int in inventoryState["workers"]:
+		if "worker" + str(thisWorker) == frameName: return true;
+	return false;
