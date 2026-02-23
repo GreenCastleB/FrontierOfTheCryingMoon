@@ -8,12 +8,21 @@ var messageCardTxt:String = "stuff";
 
 var inventoryState:Dictionary = {};
 var _spentObjects:Array[String] = [];
+var workersState:Array[Worker] = [];
 
 const workerData:Array[Dictionary] =\
-	[{"name" = "Gregg", "spriteIdx" = 0},
-	{"name" = "Padre", "spriteIdx" = 1},
-	{"name" = "Herbert", "spriteIdx" = 2},
-	{"name" = "Betsy", "spriteIdx" = 3}];
+	[{"name" = "Gregg", "spriteIdx" = 0,\
+		"flavor" = "Ain't no job too dirty for ol' Gregg.",\
+		"accepts" = [1,2,3]},
+	{"name" = "Padre", "spriteIdx" = 1,\
+		"flavor" = "Me llamo Padre.",\
+		"accepts" = [2,3]},
+	{"name" = "Herbert", "spriteIdx" = 2,\
+		"flavor" = "Où est mon canard?",\
+		"accepts" = [2,5]},
+	{"name" = "Betsy", "spriteIdx" = 3,\
+		"flavor" = "I dunno what you need but I cook a mean omelet",\
+		"accepts" = [4,5]}];
 
 const stuffData:Array[Dictionary] =\
 	[{"name" = "Silver bullet", "spriteIdx" = 0},
@@ -39,6 +48,10 @@ func setUpGame() -> void:
 	inventoryState["workers"] = [];
 	inventoryState["stuff"] = [];
 	inventoryState["interactable"] = null;
+	
+	workersState.clear();
+	for i in range(workerData.size()):
+		workersState.append(Worker.new(i));
 	
 	_spentObjects = [];
 

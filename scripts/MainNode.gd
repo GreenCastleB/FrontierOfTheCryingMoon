@@ -25,19 +25,9 @@ var currState:STATE = STATE.INIT:
 				pass;
 		
 		%InventoryUI.setTSBtnsVisible(newState == STATE.WALKING);
+		%DialogUI.setTSBtnsVisible(newState == STATE.DIALOG);
 
-func _ready() -> void:
-	printt("MainNode ::", "_ready");
-	MUSIC.playDayTheme();
-
-func _input(event: InputEvent) -> void:
-	if currState in [STATE.WALKING]:
-		# pass input into WorldWindow who will pass it to WorldNode
-		%WorldWindow.inputFromParent(event);
-	if currState in [STATE.DIALOG]:
-		# if dialog is open, cancel or left should get out of it
-		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_left"):
-			currState = STATE.EXIT_DIALOG;
+# States & Transitions
 
 func _on_anim_finished(anim_name: StringName) -> void:
 	var animFin:String = STATESTR[currState] + ":" + anim_name;
@@ -49,54 +39,64 @@ func _on_anim_finished(anim_name: StringName) -> void:
 		"EXIT_DIALOG:HideDialog":
 			%DialogUI.hide();
 			currState = STATE.WALKING;
-
 func _on_world_window_room_loaded() -> void:
 	printt("MainNode ::", "_on_world_window_room_loaded");
 	currState = STATE.WALKING;
-
 func _on_world_window_room_reloading() -> void:
 	printt("MainNode ::", "_on_world_window_room_reloading");
 	currState = STATE.ROOM_XFER;
 
+func _ready() -> void:
+	printt("MainNode ::", "_ready");
+	MUSIC.playDayTheme();
+
+# Input
+
+func _input(event: InputEvent) -> void:
+	if currState in [STATE.WALKING]:
+		# pass input into WorldWindow who will pass it to WorldNode
+		%WorldWindow.inputFromParent(event);
+	if currState in [STATE.DIALOG]:
+		# if dialog is open, cancel or left should get out of it
+		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_left"):
+			currState = STATE.EXIT_DIALOG;
+
+# NPC interaction
 
 func _on_world_window_world_approaching_npc(whom: String) -> void:
 	printt("MainNode ::", "_on_world_window_world_approaching_npc", whom);
-	match whom:
-		"bartender":
-			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.BARTENDER, 0);
-		"worker0":
-			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 0);
-		"worker1":
-			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 1);
-		"worker2":
-			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 2);
-		"worker3":
-			GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, 3);
+	if whom == "bartender":
+		GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.BARTENDER, 0);
+	elif whom.begins_with("worker"): # e.g. "worker2"
+		GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.WORKER, whom.to_int());
 	%InventoryUI.updateFromInvState();
-
 func _on_world_window_world_departing_npc(whom: String) -> void:
 	printt("MainNode ::", "_on_world_window_world_departing_npc", whom);
 	GLOBAL.inventoryState["interactable"] = null;
 	%InventoryUI.updateFromInvState();
-
-func _on_world_window_world_approaching_ground_stuff(what: String) -> void:
-	printt("MainNode ::", "_on_world_window_world_approaching_ground_stuff", what);
-	GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.STUFFITEM, int(what));
-	%InventoryUI.updateFromInvState();
-
-func _on_world_window_world_departing_ground_stuff(what: String) -> void:
-	printt("MainNode ::", "_on_world_window_world_departing_ground_stuff", what);
-	GLOBAL.inventoryState["interactable"] = null;
-	%InventoryUI.updateFromInvState();
-
-
-func _on_inventory_ui_picked_up_ground_stuff() -> void:
-	printt("MainNode ::", "_on_inventory_ui_picked_up_ground_stuff");
-	%WorldWindow.killInteractableFromParent();
-
 func _on_inventory_ui_talk_to_button_pressed() -> void:
 	printt("MainNode ::", "_on_inventory_ui_talk_to_button_pressed");
 	if currState in [STATE.WALKING]:
 		%DialogUI.prepareForInteraction();
 		%InventoryUI.clearInteractable();
 		currState = STATE.ENTER_DIALOG;
+
+# Ground Stuff interaction
+
+func _on_world_window_world_approaching_ground_stuff(what: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_approaching_ground_stuff", what);
+	GLOBAL.inventoryState["interactable"] = Interactable.new(Interactable.TYPE.STUFFITEM, int(what));
+	%InventoryUI.updateFromInvState();
+func _on_world_window_world_departing_ground_stuff(what: String) -> void:
+	printt("MainNode ::", "_on_world_window_world_departing_ground_stuff", what);
+	GLOBAL.inventoryState["interactable"] = null;
+	%InventoryUI.updateFromInvState();
+func _on_inventory_ui_picked_up_ground_stuff() -> void:
+	printt("MainNode ::", "_on_inventory_ui_picked_up_ground_stuff");
+	%WorldWindow.killInteractableFromParent(false);
+
+func _on_dialog_ui_WorkerAssignedTask() -> void:
+	printt("MainNode ::", "_on_dialog_ui_WorkerAssignedTask");
+	%InventoryUI.updateFromInvState();
+	%WorldWindow.killInteractableFromParent(true);
+	currState = STATE.EXIT_DIALOG;

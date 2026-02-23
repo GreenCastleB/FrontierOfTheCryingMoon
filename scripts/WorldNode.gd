@@ -125,8 +125,8 @@ func GroundStuffExited(body:Node2D, notes:String) -> void:
 var currInteractableBody = null;
 ## parent is telling us that we need to eliminate the body we just interacted with
 ## because, for instance, it's an item that's been picked up
-func killInteractableFromParent() -> void:
-	printt("WorldNode ::", "killInteractableFromParent");
+func killInteractableFromParent(poof:bool = false) -> void:
+	printt("WorldNode ::", "killInteractableFromParent", "poof=" + str(poof));
 	if currInteractableBody == null: return;
 	GLOBAL.registerAsSpent(currInteractableBody.name);
 	currInteractableBody.queue_free();

@@ -145,4 +145,5 @@ autoplay = &"RESET"
 [connection signal="worldApproachingNPC" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_approaching_npc"]
 [connection signal="worldDepartingGroundStuff" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_departing_ground_stuff"]
 [connection signal="worldDepartingNPC" from="UIRegionBox/WorldWindow" to="." method="_on_world_window_world_departing_npc"]
+[connection signal="workerWasAssignedTask" from="UIRegionBox/DialogUI" to="." method="_on_dialog_ui_WorkerAssignedTask"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_finished"]

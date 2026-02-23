@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://8gkiyli55w87"]
+
+[ext_resource type="PackedScene" uid="uid://c11bij67qsqob" path="res://scenes/StuffNode.tscn" id="1_7wj3w"]
+[ext_resource type="LabelSettings" uid="uid://cir2clh53acwg" path="res://assets/fonts/LabelSettings_Menu_B.tres" id="2_7wj3w"]
+[ext_resource type="BitMap" uid="uid://e8odpwo0qeaw" path="res://assets/ui/whiteSquare.png" id="2_8jik6"]
+
+[node name="DialogActionNode1" type="VBoxContainer" unique_id=923366693]
+custom_minimum_size = Vector2(0, 30)
+theme_override_constants/separation = -4
+
+[node name="Icon" parent="." unique_id=1398633239 instance=ExtResource("1_7wj3w")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="TextureButton" parent="Icon" unique_id=410298713]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_click_mask = ExtResource("2_8jik6")
+
+[node name="VerbLabel" type="Label" parent="." unique_id=1110235940]
+layout_mode = 2
+text = "give"
+label_settings = ExtResource("2_7wj3w")
+horizontal_alignment = 1

@@ -56,10 +56,11 @@ func inputFromParent(event: InputEvent) -> void:
 		WVKid.inputFromParent(event);
 
 ## parent is telling us that the currently interacted with item should be removed
-func killInteractableFromParent() -> void:
+## TODO: poof indicates whether there should be an animation or not
+func killInteractableFromParent(poof:bool = false) -> void:
 	var WVKid = %WorldView.get_child(0);
 	if WVKid != null:
-		WVKid.killInteractableFromParent();
+		WVKid.killInteractableFromParent(poof);
 
 signal roomReloading();
 func reloadWorld() -> void:

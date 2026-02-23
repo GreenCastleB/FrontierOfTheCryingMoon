@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://2sixb8376mup" path="res://scripts/DialogUINode.gd" id="1_6n8ev"]
 [ext_resource type="LabelSettings" uid="uid://bmhblsr0by1t3" path="res://assets/fonts/LabelSettings_Menu_H1.tres" id="1_wgg1a"]
 [ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_kqcxc"]
+[ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_6fm77"]
+[ext_resource type="PackedScene" uid="uid://8gkiyli55w87" path="res://scenes/DialogActionNode.tscn" id="4_6llym"]
+[ext_resource type="Texture2D" uid="uid://ds2o1awck45r2" path="res://assets/ui/dpadD_left.png" id="5_6llym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p174r"]
 
 [node name="DialogUINode" type="Control" unique_id=713779641]
 layout_mode = 3
@@ -28,45 +33,82 @@ grow_horizontal = 0
 grow_vertical = 2
 color = Color(0.078431375, 0, 0.09803922, 1)
 
-[node name="MainContainer" type="VBoxContainer" parent="Background" unique_id=783776344]
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=389616068]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_right = 40.0
-offset_bottom = 125.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="Label" type="Label" parent="Background/MainContainer" unique_id=135374145]
+[node name="MainContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=783776344]
 layout_mode = 2
-text = "Talkin' with
-Bartender"
-label_settings = ExtResource("1_wgg1a")
-horizontal_alignment = 1
+theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="Background/MainContainer" unique_id=443257141]
-custom_minimum_size = Vector2(0, 8)
+[node name="Label2" type="Label" parent="Background/MarginContainer/MainContainer" unique_id=1142494762]
 layout_mode = 2
-
-[node name="Label2" type="Label" parent="Background/MainContainer" unique_id=1142494762]
-layout_mode = 2
-text = "Howdy there partner"
+text = "Talkin' with"
 label_settings = ExtResource("2_kqcxc")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Background/MainContainer" unique_id=1299598626]
+[node name="NPCName" type="Label" parent="Background/MarginContainer/MainContainer" unique_id=135374145]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bartender"
+label_settings = ExtResource("1_wgg1a")
+horizontal_alignment = 1
+
+[node name="Spacer1" type="Control" parent="Background/MarginContainer/MainContainer" unique_id=443257141]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="NPCDialog" type="Label" parent="Background/MarginContainer/MainContainer" unique_id=1299598626]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 text = "What can I do ya for?"
 label_settings = ExtResource("2_kqcxc")
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Spacer2" type="Control" parent="Background/MainContainer" unique_id=2118149888]
-custom_minimum_size = Vector2(0, 8)
+[node name="Spacer2" type="Control" parent="Background/MarginContainer/MainContainer" unique_id=2118149888]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="Background/MainContainer" unique_id=1037416947]
+[node name="ActionsContainer" type="HBoxContainer" parent="Background/MarginContainer/MainContainer" unique_id=788909626]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "{actions}"
-label_settings = ExtResource("1_wgg1a")
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="StuffNode1" parent="Background/MarginContainer/MainContainer/ActionsContainer" unique_id=923366693 instance=ExtResource("4_6llym")]
+layout_mode = 2
+
+[node name="StuffNode2" parent="Background/MarginContainer/MainContainer/ActionsContainer" unique_id=988774042 instance=ExtResource("4_6llym")]
+layout_mode = 2
+
+[node name="StuffNode3" parent="Background/MarginContainer/MainContainer/ActionsContainer" unique_id=178992470 instance=ExtResource("4_6llym")]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="Background/MarginContainer/MainContainer" unique_id=1950290631]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TSBackBtn" type="Control" parent="Background/MarginContainer/MainContainer" unique_id=984937858]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="LeftBtn" type="TouchScreenButton" parent="Background/MarginContainer/MainContainer/TSBackBtn" unique_id=1662152333]
+texture_normal = ExtResource("4_6fm77")
+texture_pressed = ExtResource("5_6llym")
+shape = SubResource("RectangleShape2D_p174r")
+shape_visible = false
+action = "ui_cancel"
+visibility_mode = 1

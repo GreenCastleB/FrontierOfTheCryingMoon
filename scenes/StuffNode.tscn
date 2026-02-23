@@ -4,6 +4,7 @@
 load_path = "res://.godot/imported/inv_icons.png-7f08e3a705ac783be560b24b26f9f469.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cr2o"]
+resource_local_to_scene = true
 atlas = SubResource("CompressedTexture2D_6qy4i")
 region = Rect2(0, 0, 20, 20)
 

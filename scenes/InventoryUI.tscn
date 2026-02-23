@@ -186,6 +186,7 @@ texture_pressed = ExtResource("5_d0rvq")
 shape = SubResource("RectangleShape2D_l5txx")
 shape_visible = false
 action = "ui_left"
+visibility_mode = 1
 
 [node name="TSBtn2" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=952657258]
 custom_minimum_size = Vector2(20, 20)
@@ -197,6 +198,7 @@ texture_pressed = ExtResource("7_4jdrs")
 shape = SubResource("RectangleShape2D_rp0l5")
 shape_visible = false
 action = "ui_up"
+visibility_mode = 1
 
 [node name="TSBtn3" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=331534000]
 custom_minimum_size = Vector2(20, 20)
@@ -208,6 +210,7 @@ texture_pressed = ExtResource("9_a70b0")
 shape = SubResource("RectangleShape2D_67gaj")
 shape_visible = false
 action = "ui_down"
+visibility_mode = 1
 
 [node name="TSBtn4" type="Control" parent="Background/MarginContainer/MenuContainer/TSBtnsHBox" unique_id=1024453835]
 custom_minimum_size = Vector2(20, 20)
@@ -219,5 +222,6 @@ texture_pressed = ExtResource("11_u03wm")
 shape = SubResource("RectangleShape2D_rhf62")
 shape_visible = false
 action = "ui_right"
+visibility_mode = 1
 
 [connection signal="pressed" from="Background/MarginContainer/MenuContainer/TalkToHBox/TalkButton" to="." method="_on_TalkTo_button_pressed"]

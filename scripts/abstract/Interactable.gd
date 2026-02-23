@@ -15,7 +15,28 @@ var name:StringName:
 			TYPE.STUFFITEM:
 				return GLOBAL.stuffData[myIdx]["name"];
 			_:
-				return "Unknown";
+				return "Unreachable";
+
+var flavorText:String:
+	get():
+		match myType:
+			TYPE.BARTENDER:
+				return "What can I do ya for?";
+			TYPE.WORKER:
+				return GLOBAL.workerData[myIdx]["flavor"];
+			TYPE.STUFFITEM:
+				return "An object.";
+			_:
+				return "Unreachable";
+
+## only applicable for workers
+var acceptedStuff:Array:
+	get():
+		match myType:
+			TYPE.WORKER:
+				return GLOBAL.workerData[myIdx]["accepts"];
+			_:
+				return [];
 
 ## represents interactable thing you can approach
 func _init(whichType:TYPE, whichIdx:int) -> void:
