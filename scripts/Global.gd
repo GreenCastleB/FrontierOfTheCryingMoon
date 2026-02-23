@@ -10,6 +10,12 @@ var inventoryState:Dictionary = {};
 var _spentObjects:Array[String] = [];
 var workersState:Array[Worker] = [];
 
+const WORK_SPEED_FAVORITE:int = 20;
+const WORK_SPEED_NORMAL:int = 16;
+
+const UI_ICON_SIZE:int = 20;
+
+const NUM_WORKERS:int = 4;
 const workerData:Array[Dictionary] =\
 	[{"name" = "Gregg", "spriteIdx" = 0,\
 		"flavor" = "Ain't no job too dirty for ol' Gregg.",\
@@ -24,6 +30,7 @@ const workerData:Array[Dictionary] =\
 		"flavor" = "I dunno what you need but I cook a mean omelet",\
 		"accepts" = [4,5]}];
 
+const NUM_STUFF:int = 6;
 const stuffData:Array[Dictionary] =\
 	[{"name" = "Silver bullet", "spriteIdx" = 0},
 	{"name" = "Horse poop", "spriteIdx" = 1},

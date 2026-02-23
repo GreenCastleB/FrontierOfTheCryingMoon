@@ -41,7 +41,7 @@ func updateFromInvState() -> void:
 			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").texture;
 			var thisWorker:Worker = GLOBAL.workersState[GLOBAL.inventoryState["workers"][i-1]];
 			
-			iconTexture.region.position.x = 20 * thisWorker.spriteIdx;
+			iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * thisWorker.spriteIdx;
 			updatingNode.get_node("Progress").value = thisWorker.progress;
 			
 			%WorkersHBox.get_node("WorkerNode"+str(i)).show();
@@ -54,8 +54,7 @@ func updateFromInvState() -> void:
 			var updatingNode:Control = %StuffGrid.get_node("StuffNode"+str(i));
 			
 			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").texture;
-			iconTexture.region.position.x = 20 * GLOBAL.inventoryState["stuff"][i-1];
-			printt("InventoryUI ::", "updateFromInvState", "setting stuff node "+str(i), "to 20 * "+str(GLOBAL.inventoryState["stuff"][i-1]));
+			iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * GLOBAL.inventoryState["stuff"][i-1];
 			
 			%StuffGrid.get_node("StuffNode"+str(i)).show();
 	
@@ -64,28 +63,29 @@ func updateFromInvState() -> void:
 	if thisInteractable == null:
 		clearInteractable();
 	else:
+		# region offset must be set to correct position in interactable_icons.png
 		match thisInteractable.myType:
-			Interactable.TYPE.BARTENDER:
-				%TalkToLabel.text = "Bartender";
-				var iconTexture:AtlasTexture = %TalkToIcon.texture;
-				iconTexture.region.position.x = 20 * 10;
-				%TalkToIcon.show();
-				%TalkButton.show();
-				%TalkToVerb.text = "Check";
 			Interactable.TYPE.WORKER:
 				%TalkToLabel.text = GLOBAL.workerData[thisInteractable.myIdx]["name"];
 				var iconTexture:AtlasTexture = %TalkToIcon.texture;
-				iconTexture.region.position.x = 20 * thisInteractable.myIdx;
+				iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * thisInteractable.myIdx;
 				%TalkToIcon.show();
 				%TalkButton.show();
 				%TalkToVerb.text = "Talk";
 			Interactable.TYPE.STUFFITEM:
 				%TalkToLabel.text = GLOBAL.stuffData[thisInteractable.myIdx]["name"];
 				var iconTexture:AtlasTexture = %TalkToIcon.texture;
-				iconTexture.region.position.x = 20 * (thisInteractable.myIdx + 4);
+				iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * (thisInteractable.myIdx + GLOBAL.NUM_WORKERS);
 				%TalkToIcon.show();
 				%TalkButton.show();
 				%TalkToVerb.text = "Get";
+			Interactable.TYPE.BARTENDER:
+				%TalkToLabel.text = "Bartender";
+				var iconTexture:AtlasTexture = %TalkToIcon.texture;
+				iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * (0 + GLOBAL.NUM_WORKERS + GLOBAL.NUM_STUFF);
+				%TalkToIcon.show();
+				%TalkButton.show();
+				%TalkToVerb.text = "Check";
 
 signal pickedUpGroundStuff();
 signal talkToButtonPressed();

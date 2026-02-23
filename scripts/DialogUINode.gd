@@ -42,7 +42,7 @@ func populateActionsContainer(thisNPC:Interactable) -> void:
 			var updatingNode:Control = %ActionsContainer.get_node("StuffNode"+str(i));
 			
 			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").get_node("Icon").texture;
-			iconTexture.region.position.x = 20 * thisNPC.acceptedStuff[i-1];
+			iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * thisNPC.acceptedStuff[i-1];
 			
 			# does the player actually have at least one of this thing?
 			if thisNPC.acceptedStuff[i-1] in GLOBAL.inventoryState["stuff"]:
