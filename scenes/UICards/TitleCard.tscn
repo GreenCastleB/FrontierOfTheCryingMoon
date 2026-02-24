@@ -5,7 +5,6 @@
 [ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_sqikw"]
 [ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/titlescreenbtn.png" id="4_ekcdg"]
 [ext_resource type="LabelSettings" uid="uid://blypgdyyrig5m" path="res://assets/fonts/LabelSettings_TitleBtn.tres" id="5_qokpe"]
-[ext_resource type="Texture2D" uid="uid://cevtpwntv621i" path="res://assets/bitesizejam.png" id="6_77urs"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="7_o2kl0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpw5s"]
@@ -153,27 +152,6 @@ text = "Settings"
 label_settings = ExtResource("5_qokpe")
 horizontal_alignment = 1
 vertical_alignment = 3
-
-[node name="BSJHBox" type="HBoxContainer" parent="MarginContainer/MainVBox" unique_id=452940138]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_constants/separation = 6
-alignment = 1
-
-[node name="BSJLabel" type="Label" parent="MarginContainer/MainVBox/BSJHBox" unique_id=1829676962]
-layout_mode = 2
-text = "made for Bite Size Game Jam"
-label_settings = ExtResource("3_sqikw")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MainVBox/BSJHBox" unique_id=1527967011]
-layout_mode = 2
-texture = ExtResource("6_77urs")
-
-[node name="DateLabel" type="Label" parent="MarginContainer/MainVBox/BSJHBox" unique_id=594761977]
-layout_mode = 2
-text = "February 2026"
-label_settings = ExtResource("3_sqikw")
 
 [node name="XferRect" type="ColorRect" parent="." unique_id=2029064616]
 unique_name_in_owner = true
