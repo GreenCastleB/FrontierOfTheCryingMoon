@@ -15,6 +15,7 @@ const FULL_SIZE:int = 102;
 func _ready() -> void:
 	printt("InventoryUI ::", "_ready");
 	updateFromInvState();
+	GLOBAL.timeUnitPassed.connect(updateFromInvState);
 
 ## shows or hides touchscreen buttons at bottom
 ## this should be called for gameplay reasons, not based on env sniffing

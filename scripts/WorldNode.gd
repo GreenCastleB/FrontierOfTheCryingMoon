@@ -134,9 +134,8 @@ func killInteractableFromParent(poof:bool = false) -> void:
 func doorwayEntered(_body:Node2D, notes:String) -> void:
 	printt("WorldNode ::", "doorwayEntered", notes);
 	var notesExp = notes.split("|");
-	GLOBAL.spawnRoom = int(notesExp[0]);
-	GLOBAL.spawnLoc = Vector2i(int(notesExp[1]), int(notesExp[2]));
 	
+	GLOBAL.goToRoom(int(notesExp[0]), Vector2i(int(notesExp[1]), int(notesExp[2])));
 	stopFromParent();
 	currState = STATE.EXIT;
 
