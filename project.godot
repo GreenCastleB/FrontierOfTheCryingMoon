@@ -14,7 +14,7 @@ config/name="Frontier of the Crying Moon"
 config/description="Made for a Bite Size Game Jam
 w/ HyperPixel & Timconceivable
 February 2026"
-config/version="0.2"
+config/version="0.3"
 run/main_scene="uid://frsrupfv2xrr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://yvdirgw4sbta"
