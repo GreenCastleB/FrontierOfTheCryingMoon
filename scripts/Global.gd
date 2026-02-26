@@ -3,7 +3,6 @@ extends Node
 # Global Code.  Everybody needs to access this.
 
 var spawnRoom:int = 1;
-var _prevRoom:int = 0;
 var spawnLoc:Vector2 = Vector2.ZERO;
 var messageCardTxt:String = "stuff";
 var _timeUnitsPassed:int = 0;
@@ -67,20 +66,16 @@ func setUpGame() -> void:
 	
 	# initial location of player
 	spawnRoom = 1;
-	_prevRoom = 0;
 	spawnLoc = Vector2.ZERO;
 
 ## World has indicated the player is moving to a new room.
 func goToRoom(newSpawnRoom:int, newSpawnLoc:Vector2i) -> void:
-	var backAndForth:bool = newSpawnRoom == GLOBAL._prevRoom;
-	printt("GLOBAL ::", "goToRoom", str(newSpawnRoom), "backAndForth=" + str(backAndForth));
+	printt("GLOBAL ::", "goToRoom", str(newSpawnRoom));
 	
-	GLOBAL._prevRoom = GLOBAL.spawnRoom;
 	GLOBAL.spawnRoom = newSpawnRoom;
 	GLOBAL.spawnLoc = newSpawnLoc;
 	
-	#if !backAndForth: timeUnitPass();
-	timeUnitPass(); # TODO: ease of testing
+	timeUnitPass(); # TODO: replace with real timer
 
 ## A unit of gametime has passed
 func timeUnitPass() -> void:

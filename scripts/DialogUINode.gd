@@ -20,10 +20,9 @@ func _ready() -> void:
 	ACkids[2].get_node("Icon").get_node("Button").pressed.connect(actionButtonClick.bind(2));
 
 ## shows or hides touchscreen button at bottom
-## this should be called for gameplay reasons, not based on env sniffing
 func setTSBtnsVisible(newState:bool) -> void:
 	%ActionsContainer.visible = newState;
-	%TSBackBtn.visible = newState;
+	%TSBackBtn.visible = newState and DisplayServer.is_touchscreen_available();
 
 func prepareForInteraction() -> void:
 	var target:Interactable = GLOBAL.inventoryState["interactable"];
