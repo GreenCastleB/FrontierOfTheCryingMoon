@@ -40,8 +40,22 @@ const stuffData:Array[Dictionary] =\
 	{"name" = "Frying pan", "spriteIdx" = 4},
 	{"name" = "Rubber ducky", "spriteIdx" = 5}];
 
+var SHOW_TSBUTTONS:bool = false;
 func _ready() -> void:
 	printt("GLOBAL ::", "_ready");
+	
+	# determine if TSButtons should be shown
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		SHOW_TSBUTTONS = true;
+	elif JavaScriptBridge.eval("return isMobileDevice();", true):
+		SHOW_TSBUTTONS = true;
+	else:
+		var getNavigator = JavaScriptBridge.get_interface("navigator");
+		if getNavigator != null:
+			var userAgent = getNavigator.userAgent;
+			if "iPad" in userAgent or "Macintosh" in userAgent:
+				SHOW_TSBUTTONS = true;
+	# assumed to be desktop (with keyboard) if none of these conditions are met.
 
 func setUpGame() -> void:
 	printt("GLOBAL ::", "setUpGame");

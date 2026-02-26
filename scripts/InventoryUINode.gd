@@ -20,7 +20,7 @@ func _ready() -> void:
 ## shows or hides touchscreen buttons at bottom
 ## this should be called for gameplay reasons, not based on env sniffing
 func setTSBtnsVisible(newState:bool) -> void:
-	%TSBtnsHBox.visible = newState and DisplayServer.is_touchscreen_available();
+	%TSBtnsHBox.visible = newState and GLOBAL.SHOW_TSBUTTONS;
 
 ## hides button and labels for interactable section
 func clearInteractable() -> void:

@@ -22,7 +22,7 @@ func _ready() -> void:
 ## shows or hides touchscreen button at bottom
 func setTSBtnsVisible(newState:bool) -> void:
 	%ActionsContainer.visible = newState;
-	%TSBackBtn.visible = newState and DisplayServer.is_touchscreen_available();
+	%TSBackBtn.visible = newState and GLOBAL.SHOW_TSBUTTONS;
 
 func prepareForInteraction() -> void:
 	var target:Interactable = GLOBAL.inventoryState["interactable"];
