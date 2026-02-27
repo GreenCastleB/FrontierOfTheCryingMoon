@@ -23,6 +23,7 @@ func _ready() -> void:
 func setTSBtnsVisible(newState:bool) -> void:
 	%ActionsContainer.visible = newState;
 	%TSBackBtn.visible = newState and GLOBAL.SHOW_TSBUTTONS;
+	%NoTouchLabel.visible = newState and !GLOBAL.SHOW_TSBUTTONS;
 
 func prepareForInteraction() -> void:
 	var target:Interactable = GLOBAL.inventoryState["interactable"];

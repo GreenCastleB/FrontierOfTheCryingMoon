@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_6fm77"]
 [ext_resource type="PackedScene" uid="uid://8gkiyli55w87" path="res://scenes/DialogActionNode.tscn" id="4_6llym"]
 [ext_resource type="Texture2D" uid="uid://ds2o1awck45r2" path="res://assets/ui/dpadD_left.png" id="5_6llym"]
+[ext_resource type="LabelSettings" uid="uid://eveomy0228r1" path="res://assets/fonts/LabelSettings_Menu_I.tres" id="7_p174r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p174r"]
 
@@ -113,3 +114,11 @@ shape = SubResource("RectangleShape2D_p174r")
 shape_visible = false
 action = "ui_cancel"
 visibility_mode = 1
+
+[node name="NoTouchLabel" type="Label" parent="Background/MarginContainer/MainContainer" unique_id=181499570]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "\"Esc\" to back off"
+label_settings = ExtResource("7_p174r")
+horizontal_alignment = 1

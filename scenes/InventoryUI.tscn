@@ -15,6 +15,7 @@
 [ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="7_tjkuq"]
 [ext_resource type="Texture2D" uid="uid://c5rxovlrkhhi8" path="res://assets/ui/dpadD_down.png" id="9_a70b0"]
 [ext_resource type="Texture2D" uid="uid://ctfeyxwqnwwam" path="res://assets/ui/dpadD_right.png" id="11_u03wm"]
+[ext_resource type="LabelSettings" uid="uid://eveomy0228r1" path="res://assets/fonts/LabelSettings_Menu_I.tres" id="16_0k2hi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k2hi"]
 atlas = ExtResource("5_gxnuj")
@@ -224,5 +225,13 @@ shape = SubResource("RectangleShape2D_rhf62")
 shape_visible = false
 action = "ui_right"
 visibility_mode = 1
+
+[node name="NoTouchLabel" type="Label" parent="Background/MarginContainer/MenuContainer" unique_id=2139733008]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "\"ASWD\" for walkin'"
+label_settings = ExtResource("16_0k2hi")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Background/MarginContainer/MenuContainer/TalkToHBox/TalkButton" to="." method="_on_TalkTo_button_pressed"]

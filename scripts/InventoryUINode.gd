@@ -21,6 +21,7 @@ func _ready() -> void:
 ## this should be called for gameplay reasons, not based on env sniffing
 func setTSBtnsVisible(newState:bool) -> void:
 	%TSBtnsHBox.visible = newState and GLOBAL.SHOW_TSBUTTONS;
+	%NoTouchLabel.visible = newState and !GLOBAL.SHOW_TSBUTTONS;
 
 ## hides button and labels for interactable section
 func clearInteractable() -> void:
