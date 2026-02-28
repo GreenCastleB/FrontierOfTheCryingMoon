@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ckbdfob5b3xv6"]
 
-[ext_resource type="Script" uid="uid://f74rsifsmsjq" path="res://scripts/MessageCard.gd" id="1_lqanm"]
-[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_uci7g"]
+[ext_resource type="Script" uid="uid://f74rsifsmsjq" path="res://scripts/UICards/MessageCard.gd" id="1_lqanm"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LS_P_White.tres" id="3_uci7g"]
 [ext_resource type="Texture2D" uid="uid://d4gncxav7hsj0" path="res://assets/ui/smallerbtn.png" id="4_8u5ri"]
-[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="5_gvj03"]
+[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LS_Button_Small.tres" id="5_gvj03"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="5_p4gs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]

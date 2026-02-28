@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://cir2clh53acwg"]
 
-[ext_resource type="FontFile" uid="uid://c45fk2qs37yf2" path="res://assets/fonts/devilchildren.ttf" id="1_d221y"]
+[ext_resource type="FontFile" uid="uid://c45fk2qs37yf2" path="res://assets/fonts/devilchildren.ttf" id="1_f8f7u"]
 
 [resource]
 line_spacing = -2.0
-font = ExtResource("1_d221y")
+font = ExtResource("1_f8f7u")
 font_size = 8
 font_color = Color(0.85490197, 0.32941177, 0.1764706, 1)

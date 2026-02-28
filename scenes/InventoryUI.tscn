@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0afm6ub7n0av"]
 
 [ext_resource type="Script" uid="uid://ce2hk430kne6" path="res://scripts/InventoryUINode.gd" id="1_l5txx"]
-[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="2_ju2k0"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LS_P_White.tres" id="2_ju2k0"]
 [ext_resource type="PackedScene" uid="uid://d022rko0xdddv" path="res://scenes/WorkerNode.tscn" id="3_4jdrs"]
 [ext_resource type="PackedScene" uid="uid://c11bij67qsqob" path="res://scenes/StuffNode.tscn" id="4_4jdrs"]
 [ext_resource type="Texture2D" uid="uid://dwg1h5urg0g14" path="res://assets/ui/dpad_left.png" id="4_nvcdf"]
@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cyok08w4ldo7j" path="res://assets/ui/dpad_down.png" id="6_tbtli"]
 [ext_resource type="Texture2D" uid="uid://dmm8kj6kx4xkr" path="res://assets/ui/dpadD_up.png" id="7_4jdrs"]
 [ext_resource type="Texture2D" uid="uid://bfr72orwtusf8" path="res://assets/ui/dpad_right.png" id="7_hfc6r"]
-[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="7_tjkuq"]
+[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LS_Button_Small.tres" id="7_tjkuq"]
 [ext_resource type="Texture2D" uid="uid://c5rxovlrkhhi8" path="res://assets/ui/dpadD_down.png" id="9_a70b0"]
 [ext_resource type="Texture2D" uid="uid://ctfeyxwqnwwam" path="res://assets/ui/dpadD_right.png" id="11_u03wm"]
-[ext_resource type="LabelSettings" uid="uid://eveomy0228r1" path="res://assets/fonts/LabelSettings_Menu_I.tres" id="16_0k2hi"]
+[ext_resource type="LabelSettings" uid="uid://eveomy0228r1" path="res://assets/fonts/LS_P_Purple.tres" id="16_0k2hi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k2hi"]
 atlas = ExtResource("5_gxnuj")

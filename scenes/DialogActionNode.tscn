@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8gkiyli55w87"]
 
 [ext_resource type="PackedScene" uid="uid://c11bij67qsqob" path="res://scenes/StuffNode.tscn" id="1_7wj3w"]
-[ext_resource type="LabelSettings" uid="uid://cir2clh53acwg" path="res://assets/fonts/LabelSettings_Menu_B.tres" id="2_7wj3w"]
+[ext_resource type="LabelSettings" uid="uid://cir2clh53acwg" path="res://assets/fonts/LS_P_Orange.tres" id="2_7wj3w"]
 [ext_resource type="BitMap" uid="uid://e8odpwo0qeaw" path="res://assets/ui/whiteSquare.png" id="2_8jik6"]
 
 [node name="DialogActionNode1" type="VBoxContainer" unique_id=923366693]

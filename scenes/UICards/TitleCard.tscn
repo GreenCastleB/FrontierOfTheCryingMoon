@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://frsrupfv2xrr"]
 
-[ext_resource type="Script" uid="uid://hm7vffkl5gtm" path="res://scripts/TitleCard.gd" id="1_ab78a"]
-[ext_resource type="LabelSettings" uid="uid://iijjbxdiskul" path="res://assets/fonts/LabelSettings_CardHeader.tres" id="2_ab78a"]
-[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_sqikw"]
+[ext_resource type="Script" uid="uid://hm7vffkl5gtm" path="res://scripts/UICards/TitleCard.gd" id="1_ab78a"]
+[ext_resource type="LabelSettings" uid="uid://iijjbxdiskul" path="res://assets/fonts/LS_CardHeader.tres" id="2_ab78a"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LS_P_White.tres" id="3_sqikw"]
 [ext_resource type="Texture2D" uid="uid://casj14fu0smr8" path="res://assets/ui/titlescreenbtn.png" id="4_ekcdg"]
-[ext_resource type="LabelSettings" uid="uid://blypgdyyrig5m" path="res://assets/fonts/LabelSettings_TitleBtn.tres" id="5_qokpe"]
+[ext_resource type="LabelSettings" uid="uid://blypgdyyrig5m" path="res://assets/fonts/LS_Button_Title.tres" id="5_qokpe"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="7_o2kl0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpw5s"]

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://w7dno7dlwk72"]
 
-[ext_resource type="Script" uid="uid://bako3ptikljmp" path="res://scripts/CreditsCard.gd" id="1_m0ik5"]
-[ext_resource type="LabelSettings" uid="uid://iijjbxdiskul" path="res://assets/fonts/LabelSettings_CardHeader.tres" id="2_mr0do"]
-[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LabelSettings_Menu_P.tres" id="3_8gn35"]
+[ext_resource type="Script" uid="uid://bako3ptikljmp" path="res://scripts/UICards/CreditsCard.gd" id="1_m0ik5"]
+[ext_resource type="LabelSettings" uid="uid://iijjbxdiskul" path="res://assets/fonts/LS_CardHeader.tres" id="2_mr0do"]
+[ext_resource type="LabelSettings" uid="uid://tlkpx1jnb0cx" path="res://assets/fonts/LS_P_White.tres" id="3_8gn35"]
 [ext_resource type="Shader" uid="uid://bmqdee4hsfgeu" path="res://shaders/XferBarndoor.gdshader" id="3_wok6p"]
 [ext_resource type="Texture2D" uid="uid://cevtpwntv621i" path="res://assets/bitesizejam.png" id="4_3m2bt"]
 [ext_resource type="Texture2D" uid="uid://d4gncxav7hsj0" path="res://assets/ui/smallerbtn.png" id="4_56rvk"]
-[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LabelSettings_SmallerBtn.tres" id="5_mr0do"]
+[ext_resource type="LabelSettings" uid="uid://breejx0iu0gh3" path="res://assets/fonts/LS_Button_Small.tres" id="5_mr0do"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0ik5"]
 shader = ExtResource("3_wok6p")
