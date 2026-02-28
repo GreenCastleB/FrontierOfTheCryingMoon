@@ -99,6 +99,7 @@ func timeUnitPass() -> void:
 		var thisInvWorker = workersState[thisInvWorkerIdx];
 		if thisInvWorker.timeUnitPassed():
 			# remove this worker from currents - they finished the task
+			SOUND.play("trap_built");
 			inventoryState["workers"].erase(thisInvWorkerIdx);
 	
 	_timeUnitsPassed += 1;

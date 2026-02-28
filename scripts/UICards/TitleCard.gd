@@ -41,22 +41,26 @@ func _on_play_button_pressed() -> void:
 		printt("TitleCard ::", "PLAY BUTTON PRESSED");
 		GLOBAL.setUpGame();
 		nextScene = "res://scenes/UICards/MessageCard.tscn";
+		SOUND.play("ui_select_1");
 		currState = STATE.EXIT;
 
 func _on_help_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "HELP BUTTON PRESSED");
 		nextScene = "res://scenes/UICards/HelpCard.tscn";
+		SOUND.play("ui_select_1");
 		currState = STATE.EXIT;
 
 func _on_credits_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "CREDITS BUTTON PRESSED");
 		nextScene = "res://scenes/UICards/CreditsCard.tscn";
+		SOUND.play("ui_select_1");
 		currState = STATE.EXIT;
 
 func _on_settings_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("TitleCard ::", "SETTINGS BUTTON PRESSED");
 		nextScene = "res://scenes/UICards/SettingsCard.tscn";
+		SOUND.play("ui_select_1");
 		currState = STATE.EXIT;

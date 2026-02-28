@@ -13,6 +13,7 @@ var currState:STATE = STATE.INIT:
 		printt("MainNode ::", "stateChange", stateChange);
 		match stateChange:
 			"WALKING->ENTER_DIALOG":
+				SOUND.play("npc_interact");
 				%DialogUI.show();
 				%Anim.play("ShowDialog");
 				%WorldWindow.stopFromParent();
@@ -59,6 +60,7 @@ func _input(event: InputEvent) -> void:
 	if currState in [STATE.DIALOG]:
 		# if dialog is open, cancel or left should get out of it
 		if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_left"):
+			SOUND.play("ui_select_2");
 			currState = STATE.EXIT_DIALOG;
 
 # NPC interaction
@@ -94,9 +96,11 @@ func _on_world_window_world_departing_ground_stuff(what: String) -> void:
 func _on_inventory_ui_picked_up_ground_stuff() -> void:
 	printt("MainNode ::", "_on_inventory_ui_picked_up_ground_stuff");
 	%WorldWindow.killInteractableFromParent(false);
+	SOUND.play("ui_select_3");
 
 func _on_dialog_ui_WorkerAssignedTask() -> void:
 	printt("MainNode ::", "_on_dialog_ui_WorkerAssignedTask");
 	%InventoryUI.updateFromInvState();
 	%WorldWindow.killInteractableFromParent(true);
+	SOUND.play("npc_affirmative");
 	currState = STATE.EXIT_DIALOG;

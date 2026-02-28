@@ -3,7 +3,7 @@ extends Node
 # MUSIC singleton
 
 const MIN_DB = -80.0;
-var MUSIC_DB = -20.0;
+var MUSIC_DB = -23.0;
 
 class MusicBox extends Node:
 	var player;

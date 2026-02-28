@@ -59,6 +59,7 @@ func _ready() -> void:
 func _on_skip_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("SettingsCard ::", "SKIP BUTTON PRESSED");
+		SOUND.play("ui_select_1");
 		currState = STATE.EXIT;
 
 func _on_skip_btn_timer_timeout() -> void:

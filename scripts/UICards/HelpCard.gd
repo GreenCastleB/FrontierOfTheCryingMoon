@@ -35,4 +35,5 @@ func _ready() -> void:
 func _on_back_button_pressed() -> void:
 	if currState in [STATE.READY]:
 		printt("HelpCard ::", "BACK BUTTON PRESSED");
+		SOUND.play("ui_select_2");
 		currState = STATE.EXIT;
