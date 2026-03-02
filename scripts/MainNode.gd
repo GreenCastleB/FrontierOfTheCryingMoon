@@ -96,7 +96,6 @@ func _on_world_window_world_departing_ground_stuff(what: String) -> void:
 func _on_inventory_ui_picked_up_ground_stuff() -> void:
 	printt("MainNode ::", "_on_inventory_ui_picked_up_ground_stuff");
 	%WorldWindow.killInteractableFromParent(false);
-	SOUND.play("ui_select_3");
 
 func _on_dialog_ui_WorkerAssignedTask() -> void:
 	printt("MainNode ::", "_on_dialog_ui_WorkerAssignedTask");

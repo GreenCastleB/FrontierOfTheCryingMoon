@@ -49,16 +49,25 @@ func updateFromInvState() -> void:
 			%WorkersHBox.get_node("WorkerNode"+str(i)).show();
 	
 	# update your stuff
-	for i in range(1, 9):
+	for i in range(1, GLOBAL.UI_STUFF_NODES + 1):
 		if GLOBAL.inventoryState["stuff"].size() < i:
 			%StuffGrid.get_node("StuffNode"+str(i)).hide();
 		else:
 			var updatingNode:Control = %StuffGrid.get_node("StuffNode"+str(i));
+			updatingNode.get_node("Qty").hide();
 			
 			var iconTexture:AtlasTexture = updatingNode.get_node("Icon").texture;
 			iconTexture.region.position.x = GLOBAL.UI_ICON_SIZE * GLOBAL.inventoryState["stuff"][i-1];
 			
 			%StuffGrid.get_node("StuffNode"+str(i)).show();
+	
+	# update bullets
+	if GLOBAL.inventoryState["bullets"] == 0:
+		%StuffGrid.get_node("BulletNode").hide();
+	else:
+		%StuffGrid.get_node("BulletNode/Qty").text = str(GLOBAL.inventoryState["bullets"]);
+		%StuffGrid.get_node("BulletNode/Qty").show();
+		%StuffGrid.get_node("BulletNode").show();
 	
 	# update current interactable, if any
 	var thisInteractable:Interactable = GLOBAL.inventoryState["interactable"];
@@ -101,7 +110,16 @@ func _on_TalkTo_button_pressed() -> void:
 			talkToButtonPressed.emit();
 		Interactable.TYPE.STUFFITEM:
 			# pick up item immediately
-			GLOBAL.inventoryState["stuff"].append(thisInteractable.myIdx);
+			
+			if thisInteractable.myIdx == 0:
+				# special case: silver bullet
+				GLOBAL.inventoryState["bullets"] += 1;
+				SOUND.play("gun_armed");
+			else:
+				# other groundstuff
+				GLOBAL.inventoryState["stuff"].append(thisInteractable.myIdx);
+				SOUND.play("ui_select_3");
+			
 			GLOBAL.inventoryState["interactable"] = null;
 			updateFromInvState();
 			pickedUpGroundStuff.emit();

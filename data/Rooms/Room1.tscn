@@ -21,9 +21,17 @@ tile_set = ExtResource("2_0p04j")
 editor_description = "1"
 position = Vector2(46, 78)
 
+[node name="GroundStuffNode2" parent="GroundStuffs" unique_id=1320185317 instance=ExtResource("4_wwh7q")]
+editor_description = "0"
+position = Vector2(-35, -15)
+
+[node name="GroundStuffNode3" parent="GroundStuffs" unique_id=1109549154 instance=ExtResource("4_wwh7q")]
+editor_description = "0"
+position = Vector2(-16, 40)
+
 [node name="NPCs" type="Node2D" parent="." unique_id=1028029440]
 
-[node name="NPCNode1" parent="NPCs" unique_id=1320185317 instance=ExtResource("3_0p04j")]
+[node name="NPCNode1" parent="NPCs" unique_id=1790103808 instance=ExtResource("3_0p04j")]
 position = Vector2(-102, -50)
 
 [node name="NPCNode2" parent="NPCs" unique_id=1321579663 instance=ExtResource("3_0p04j")]

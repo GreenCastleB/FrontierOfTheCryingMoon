@@ -15,6 +15,7 @@ const WORK_SPEED_FAVORITE:int = 20;
 const WORK_SPEED_NORMAL:int = 16;
 
 const UI_ICON_SIZE:int = 20;
+const UI_STUFF_NODES:int = 7;
 
 const NUM_WORKERS:int = 4;
 const workerData:Array[Dictionary] =\
@@ -33,7 +34,7 @@ const workerData:Array[Dictionary] =\
 
 const NUM_STUFF:int = 6;
 const stuffData:Array[Dictionary] =\
-	[{"name" = "Silver bullet", "spriteIdx" = 0},
+	[{"name" = "Silver bullets", "spriteIdx" = 0},
 	{"name" = "Horse poop", "spriteIdx" = 1},
 	{"name" = "Dynamite", "spriteIdx" = 2},
 	{"name" = "Bear trap", "spriteIdx" = 3},
@@ -67,6 +68,7 @@ func setUpGame() -> void:
 	messageCardTxt += "\nAnd he had 'til sundown to see what they could muster.";
 	
 	inventoryState.clear();
+	inventoryState["bullets"] = 0;
 	inventoryState["workers"] = [];
 	inventoryState["stuff"] = [];
 	inventoryState["interactable"] = null;
