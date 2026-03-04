@@ -21,7 +21,23 @@ var flavorText:String:
 	get():
 		match myType:
 			TYPE.BARTENDER:
-				return "What can I do ya for?";
+				var totalTraps:int = GLOBAL.totalAccomplishments();
+				var totalHours:int = GLOBAL.timeUnitsPassed / 4;
+				if totalTraps == 0 and totalHours == 0:
+					return "Howdy, stranger.\n\nWhat can I do ya for?";
+				
+				var flavor:String = "";
+				if totalHours == 1:
+					flavor += "One hour has passed.\n\n";
+				elif totalHours > 1:
+					flavor += "You've passed " + str(totalHours) + " hours.  ";
+				
+				if totalTraps == 1:
+					flavor += "You've set up one trap.  Think that'll be enough?";
+				elif totalTraps > 1:
+					flavor += "Now we got " + str(totalTraps) + " traps.";
+				
+				return flavor;
 			TYPE.WORKER:
 				return GLOBAL.workerData[myIdx]["flavor"];
 			TYPE.STUFFITEM:

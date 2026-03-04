@@ -5,7 +5,7 @@ extends Node
 var spawnRoom:int = 1;
 var spawnLoc:Vector2 = Vector2.ZERO;
 var messageCardTxt:String = "stuff";
-var _timeUnitsPassed:int = 0;
+var timeUnitsPassed:int = 0;
 
 var inventoryState:Dictionary = {};
 var _spentObjects:Array[String] = [];
@@ -77,7 +77,7 @@ func setUpGame() -> void:
 	for i in range(workerData.size()):
 		workersState.append(Worker.new(i));
 	
-	_timeUnitsPassed = 0;
+	timeUnitsPassed = 0;
 	_spentObjects = [];
 	
 	# initial location of player
@@ -90,8 +90,6 @@ func goToRoom(newSpawnRoom:int, newSpawnLoc:Vector2i) -> void:
 	
 	GLOBAL.spawnRoom = newSpawnRoom;
 	GLOBAL.spawnLoc = newSpawnLoc;
-	
-	timeUnitPass(); # TODO: replace with real timer
 
 ## A unit of gametime has passed
 func timeUnitPass() -> void:
@@ -104,7 +102,7 @@ func timeUnitPass() -> void:
 			SOUND.play("trap_built");
 			inventoryState["workers"].erase(thisInvWorkerIdx);
 	
-	_timeUnitsPassed += 1;
+	timeUnitsPassed += 1;
 	timeUnitPassed.emit();
 signal timeUnitPassed;
 
@@ -121,3 +119,10 @@ func isNPCWorking(frameName:String) -> bool:
 	for thisWorker:int in inventoryState["workers"]:
 		if "worker" + str(thisWorker) == frameName: return true;
 	return false;
+
+## number of accomplishments of all workers total
+func totalAccomplishments() -> int:
+	var result:int = 0;
+	for thisWorker in workersState:
+		result += thisWorker.accomplished.size();
+	return result;

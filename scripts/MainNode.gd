@@ -12,7 +12,10 @@ var currState:STATE = STATE.INIT:
 		var stateChange:String = STATESTR[oldState] + "->" + STATESTR[newState];
 		printt("MainNode ::", "stateChange", stateChange);
 		match stateChange:
+			"INIT->WALKING":
+				%CoolTimer.start();
 			"WALKING->ENTER_DIALOG":
+				%MainTimer.paused = true;
 				SOUND.play("npc_interact");
 				%DialogUI.show();
 				%Anim.play("ShowDialog");
@@ -23,7 +26,12 @@ var currState:STATE = STATE.INIT:
 				%InventoryUI.show();
 				%Anim.play("HideDialog");
 			"EXIT_DIALOG->WALKING":
-				pass;
+				%MainTimer.paused = false;
+			"WALKING->ROOM_XFER":
+				%CoolTimer.stop();
+				%MainTimer.stop();
+			"ROOM_XFER->WALKING":
+				%CoolTimer.start();
 		
 		%InventoryUI.setTSBtnsVisible(newState == STATE.WALKING);
 		%DialogUI.setTSBtnsVisible(newState == STATE.DIALOG);
@@ -103,3 +111,15 @@ func _on_dialog_ui_WorkerAssignedTask() -> void:
 	%WorldWindow.killInteractableFromParent(true);
 	SOUND.play("npc_affirmative");
 	currState = STATE.EXIT_DIALOG;
+
+## The CoolTimer is run for the first 2 seconds when the player gets control.
+func _on_cool_timer_timeout() -> void:
+	if currState in [STATE.WALKING]:
+		printt("MainNode ::", "CoolTimer expired", "MainTimer starting");
+		%MainTimer.start();
+
+## After 2 seconds, any time the player uses will come out of the Main Timer.
+func _on_main_timer_timeout() -> void:
+	if currState in [STATE.WALKING]:
+		printt("MainNode ::", "MainTimer expired");
+		GLOBAL.timeUnitPass();

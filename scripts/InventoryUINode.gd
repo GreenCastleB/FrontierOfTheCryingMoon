@@ -112,8 +112,8 @@ func _on_TalkTo_button_pressed() -> void:
 			# pick up item immediately
 			
 			if thisInteractable.myIdx == 0:
-				# special case: silver bullet
-				GLOBAL.inventoryState["bullets"] += 1;
+				# special case: silver bullets (2d2)
+				GLOBAL.inventoryState["bullets"] += randi_range(1,2) + randi_range(1,2);
 				SOUND.play("gun_armed");
 			else:
 				# other groundstuff
