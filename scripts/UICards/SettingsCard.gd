@@ -22,6 +22,10 @@ var currState:STATE = STATE.INIT:
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color("933215ff"));
 	
+	# init volume bars
+	%MusicSlider.value = MUSIC.getVolume() - MUSIC.MIN_DB;
+	%SFXSlider.value = SOUND.getVolume() - SOUND.MIN_DB;
+	
 	# intro animation
 	%XferRect.material.set_shader_parameter("progress", 1.0);
 	%XferRect.show();
@@ -37,3 +41,10 @@ func _on_back_button_pressed() -> void:
 		printt("SettingsCard ::", "BACK BUTTON PRESSED");
 		SOUND.play("ui_select_2");
 		currState = STATE.EXIT;
+
+
+func _on_music_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed: MUSIC.adjustVolume(%MusicSlider.value + MUSIC.MIN_DB);
+
+func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed: SOUND.adjustVolume(%SFXSlider.value + SOUND.MIN_DB);

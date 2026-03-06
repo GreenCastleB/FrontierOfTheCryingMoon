@@ -106,7 +106,9 @@ func stop():
 		currTrack = null;
 
 func adjustVolume(level):
+	printt("MUSIC ::", "adjustVolume", str(MUSIC_DB) + " -> " + str(level));
 	MUSIC_DB = level;
-	Jukebox["TITLE_THEME"].set_volume_db(level);
+	if currTrack == track_TITLE_THEME: Jukebox["TITLE_THEME"].set_volume_db(level);
+	elif currTrack == track_XFER_THEME: Jukebox["XFER_THEME"].set_volume_db(level);
 func getVolume() -> float:
 	return MUSIC_DB;

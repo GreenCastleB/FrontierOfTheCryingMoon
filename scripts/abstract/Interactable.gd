@@ -27,8 +27,9 @@ var flavorText:String:
 					return "Howdy, stranger.\n\nWhat can I do ya for?";
 				
 				var flavor:String = "";
+				
 				if totalHours == 1:
-					flavor += "One hour has passed.\n\n";
+					flavor += "Welp, that's one hour gone.  ";
 				elif totalHours > 1:
 					flavor += "You've passed " + str(totalHours) + " hours.  ";
 				

@@ -55,10 +55,36 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=834050785]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
-text = "TBD.  Maybe music/sfx volume sliders.
+text = "What are these for?  Don't know.  Music/sfx sliders?
 I ain't no fortune teller here."
 label_settings = ExtResource("3_dvf7m")
 autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=991298254]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=97864629]
+unique_name_in_owner = true
+layout_mode = 2
+accessibility_name = "BGM Volume"
+min_value = 25.0
+max_value = 71.0
+step = 3.0
+value = 46.0
+exp_edit = true
+rounded = true
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/MainVBox/InnerMargin/VBoxContainer" unique_id=1567944399]
+unique_name_in_owner = true
+layout_mode = 2
+accessibility_name = "Sound Effects Volume"
+min_value = 50.0
+max_value = 77.0
+step = 3.0
+value = 50.0
+exp_edit = true
+rounded = true
 
 [node name="BackButton" type="TextureButton" parent="MarginContainer/MainVBox" unique_id=1218296217]
 layout_mode = 2
@@ -95,4 +121,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.078431375, 0, 0.09803922, 1)
 
+[connection signal="drag_ended" from="MarginContainer/MainVBox/InnerMargin/VBoxContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="MarginContainer/MainVBox/InnerMargin/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="pressed" from="MarginContainer/MainVBox/BackButton" to="." method="_on_back_button_pressed"]

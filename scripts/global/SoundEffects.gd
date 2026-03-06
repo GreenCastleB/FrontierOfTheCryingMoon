@@ -54,7 +54,8 @@ func play(sample):
 	player.play();
 
 func adjustVolume(level):
+	printt("SOUND ::", "adjustVolume", str(SFX_DB) + " -> " + str(level));
 	SFX_DB = level;
-	play("confirm");
+	play("ui_select_3");
 func getVolume() -> float:
 	return SFX_DB;

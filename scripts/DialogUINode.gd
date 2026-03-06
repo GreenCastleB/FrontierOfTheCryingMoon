@@ -35,6 +35,7 @@ func prepareForInteraction() -> void:
 
 func populateActionsContainer(thisNPC:Interactable) -> void:
 	printt("DialogUI ::", "populateActionsContainer for", thisNPC.name);
+	var anyShown:bool = false;
 	for i in range(1, 4):
 		if thisNPC.acceptedStuff.size() < i:
 			%ActionsContainer.get_node("StuffNode"+str(i)).hide();
@@ -47,7 +48,9 @@ func populateActionsContainer(thisNPC:Interactable) -> void:
 			# does the player actually have at least one of this thing?
 			if thisNPC.acceptedStuff[i-1] in GLOBAL.inventoryState["stuff"]:
 				%ActionsContainer.get_node("StuffNode"+str(i)).show();
+				anyShown = true;
 			else: %ActionsContainer.get_node("StuffNode"+str(i)).hide();
+	%ActionsContainer.visible = anyShown;
 
 signal workerWasAssignedTask;
 
